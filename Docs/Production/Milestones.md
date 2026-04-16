@@ -18,6 +18,12 @@
 - M1-T9 — Basic apartment pressure loop
 
 ## Current Status
-- Current milestone: M0 — Production Lock and Project Setup
-- Current ticket: M0-T3 — Conventions Lock and Milestone Board
-- Next milestone: M1 — Apartment Pressure Prototype
+- Current milestone: M1 — Apartment Pressure Prototype
+- Current ticket: M1-T1 — First-person movement baseline
+- Previous milestone completed: M0 — Production Lock and Project Setup
+- Last stable tag: M0_ProjectSetup
+
+## Completed Milestones
+- M0 — Production Lock and Project Setup
+  - Status: Completed
+  - Stable tag: M0_ProjectSetup
