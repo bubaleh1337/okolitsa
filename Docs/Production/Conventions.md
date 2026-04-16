@@ -42,6 +42,18 @@
 
 ## Git rule
 
+### Commit message rule
+- English only
+- imperative mood
+- concise and professional
+
+#### Examples:
+
+- Set up startup scenes and production wiring
+- Add production conventions and milestone board
+
+### Branch rule
+
 - main = stable
 - dev = integration
 - feature/<ticket-name> only when needed
