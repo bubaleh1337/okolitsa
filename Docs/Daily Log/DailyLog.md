@@ -1,16 +1,26 @@
 # OKOLITSA Daily Log
 
-## 2026-04-16 — M1 start
+## 2026-04-22 — M1-T1 start
 - Active milestone: M1 — Apartment Pressure Prototype
 - Active ticket: M1-T1 — First-person movement baseline
 - Goal for session:
-  - Create movement test space
-  - Create Player object with CharacterController
-  - Implement PlayerController baseline
+  - Create movement test area
+  - Create Player object
+  - Add CharacterController
+  - Implement basic WASD movement with gravity
 - Blockers:
-  - None yet
+  - Low energy / low focus today
 - Next action:
-  - Make first PlayerController attempt
+  - Paste finished PlayerController baseline and test it
+
+- Done:
+  - Created movement test area in Apartment_Proto
+  - Created Player with CharacterController
+  - Implemented first-person movement baseline with gravity
+- Blockers:
+  - None
+- Next action:
+  - Start M1-T2 — Camera baseline
 
 ## 2026-04-16 — M0 closeout
 - Active milestone: M0 — Production Lock and Project Setup
