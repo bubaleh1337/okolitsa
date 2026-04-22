@@ -1,5 +1,18 @@
 # OKOLITSA Daily Log
 
+## 2026-04-22 — M1-T2 complete
+- Active milestone: M1 — Apartment Pressure Prototype
+- Active ticket: M1-T2 — Camera baseline
+- Done:
+  - Added CameraPivot under Player
+  - Implemented mouse look baseline
+  - Added pitch clamp
+  - Locked cursor for play mode
+- Blockers:
+  - None
+- Next action:
+  - Start M1-T3 — Simple interaction baseline
+
 ## 2026-04-22 — M1-T2 start
 - Active milestone: M1 — Apartment Pressure Prototype
 - Active ticket: M1-T2 — Camera baseline

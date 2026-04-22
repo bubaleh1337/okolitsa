@@ -19,8 +19,8 @@
 
 ## Current Status
 - Current milestone: M1 — Apartment Pressure Prototype
-- Current ticket: M1-T2 — Camera baseline
-- Previous completed ticket: M1-T1 — First-person movement baseline
+- Current ticket: M1-T3 — Simple interaction baseline
+- Previous completed ticket: M1-T2 — Camera baseline
 - Last stable tag: M0_ProjectSetup
 
 ## Completed Milestones
