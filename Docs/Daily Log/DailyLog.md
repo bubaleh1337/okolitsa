@@ -1,5 +1,40 @@
 # OKOLITSA Daily Log
 
+## 2026-04-22 — M1-T2 start
+- Active milestone: M1 — Apartment Pressure Prototype
+- Active ticket: M1-T2 — Camera baseline
+- Goal for session:
+  - Add camera pivot
+  - Implement mouse look
+  - Clamp pitch
+  - Lock cursor
+- Blockers:
+  - Low energy / low focus today
+- Next action:
+  - Paste finished PlayerLook code and wire it in Unity
+- Done:
+  - Added CameraPivot under Player
+  - Implemented mouse look baseline
+  - Added pitch clamp
+  - Locked cursor for play mode
+- Blockers:
+  - None
+- Next action:
+  - Start M1-T3 — Simple interaction baseline
+
+## 2026-04-22 — M1-T1 complete
+- Active milestone: M1 — Apartment Pressure Prototype
+- Active ticket: M1-T1 — First-person movement baseline
+- Done:
+  - Created movement test room in Apartment_Proto
+  - Created Player with child camera
+  - Added CharacterController
+  - Implemented movement baseline with gravity
+- Blockers:
+  - None
+- Next action:
+  - Start M1-T2 — Camera baseline
+
 ## 2026-04-22 — M1-T1 start
 - Active milestone: M1 — Apartment Pressure Prototype
 - Active ticket: M1-T1 — First-person movement baseline
@@ -12,7 +47,6 @@
   - Low energy / low focus today
 - Next action:
   - Paste finished PlayerController baseline and test it
-
 - Done:
   - Created movement test area in Apartment_Proto
   - Created Player with CharacterController
