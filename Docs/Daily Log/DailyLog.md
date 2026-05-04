@@ -10,10 +10,11 @@ Ok, let's start!
 
 - Done:
   - Animation of doors
+  - Create a basement
 - Blockers:
   - None
 - Next action:
-  - Create a basement
+  - Finish my balcony
 
 ## 2026-04-22 — M1-T2 complete
 - Active milestone: M1 — Apartment Pressure Prototype
