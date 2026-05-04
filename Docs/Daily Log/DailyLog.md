@@ -15,11 +15,13 @@ Ok, let's start!
   - Finish a toilet
   - Create a flashlight
   - Finish all lights in building
+  - Finish with lift shift. Currently, it only works for the 5th and 1st floors.
+  - 
   
 - Blockers:
   - None
 - Next action:
-  - Maybe work with lift shaft?..
+  - 
 
 
 ## 2026-04-22 — M1-T2 complete
