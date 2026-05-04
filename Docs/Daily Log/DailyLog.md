@@ -1,5 +1,20 @@
 # OKOLITSA Daily Log
 
+## 2026-05-04 - My new way
+
+I've started my own production - without any Milestones and AI. Just me and my project.
+
+Now I gonna conitnue my frist Okolitsa project. Its name was - Irka Horror Game. Now I've merged two projects, and we have what we have.
+
+Ok, let's start!
+
+- Done:
+  - Animation of doors
+- Blockers:
+  - None
+- Next action:
+  - Create a basement
+
 ## 2026-04-22 — M1-T2 complete
 - Active milestone: M1 — Apartment Pressure Prototype
 - Active ticket: M1-T2 — Camera baseline
