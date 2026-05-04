@@ -13,10 +13,13 @@ Ok, let's start!
   - Create a basement
   - Finish a balcony
   - Finish a toilet
+  - Create a flashlight
+  - Finish all lights in building
+  
 - Blockers:
   - None
 - Next action:
-  - Create a flashlight
+  - Maybe work with lift shaft?..
 
 
 ## 2026-04-22 — M1-T2 complete
