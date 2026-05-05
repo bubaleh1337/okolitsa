@@ -7,12 +7,17 @@ Ok, that's what I'll gonnna do:
 
 - Done:
   - Sounds (doors, flashlight, elevator)
-  - 
+  - Sounds (steps, running, jumping):
+     - SurfaceAudio.cs → on the floor/concrete
+     - PlayerFootsteps.cs → on the Player
   
 - Blockers:
   - None
 - Next action:
-  - 
+  - Add sounds for ambience: extra steps, wind: 
+     - SurfaceAudio.cs → on the ground/metal
+     - WindAmbienceController.cs → on the object Ambience
+     - WindZoneTrigger.cs → on the street trigger
 
 ## 2026-05-04 - My new way
 
