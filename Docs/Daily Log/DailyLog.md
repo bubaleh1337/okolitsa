@@ -1,5 +1,19 @@
 # OKOLITSA Daily Log
 
+## 2026-05-05 - My birthday is coming soon!
+
+..so I will continue to work on my game.
+Ok, that's what I'll gonnna do:
+
+- Done:
+  - Sounds (doors, flashlight, elevator)
+  - 
+  
+- Blockers:
+  - None
+- Next action:
+  - 
+
 ## 2026-05-04 - My new way
 
 I've started my own production - without any Milestones and AI. Just me and my project.
