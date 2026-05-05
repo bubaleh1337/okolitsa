@@ -13,14 +13,18 @@ Ok, that's what I'll gonnna do:
   - Add sounds for ambience: wind:
      - WindAmbienceController.cs → on the object Ambience
      - WindZoneTrigger.cs → on the street trigger
-  
-- Blockers:
-  - None
-- Next action:
   - Add sounds for ambience: extra steps: 
      - SurfaceAudio.cs → on the ground/metal
   - Create new textures
   - Finish decorating the apartment
+  
+- Blockers:
+  - None
+- Next action:
+  - Add tag
+  - Build the project
+  - Create a link and share to my friends
+  - Share this new on LinkedIn 
 
 ## 2026-05-04 - My new way
 
