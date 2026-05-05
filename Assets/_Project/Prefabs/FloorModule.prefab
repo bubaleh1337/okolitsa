@@ -2198,7 +2198,6 @@ GameObject:
   - component: {fileID: 2823560869371712887}
   - component: {fileID: 2441992201427524928}
   - component: {fileID: 5999818692834899938}
-  - component: {fileID: 3739166974278110508}
   m_Layer: 0
   m_Name: Stair_7
   m_TagString: Untagged
@@ -3716,19 +3715,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: -1
   m_Mesh: {fileID: 0}
---- !u!114 &3739166974278110508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 613652047538248270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &747940985317643515
 GameObject:
   m_ObjectHideFlags: 0
@@ -3775,7 +3761,6 @@ GameObject:
   - component: {fileID: 8441115396141220546}
   - component: {fileID: 1024632785250295925}
   - component: {fileID: 3822139913776655985}
-  - component: {fileID: 961664355691925236}
   m_Layer: 0
   m_Name: Landing_top
   m_TagString: Untagged
@@ -4115,19 +4100,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &961664355691925236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852417124756250766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &996275094524835045
 GameObject:
   m_ObjectHideFlags: 0
@@ -8099,7 +8071,6 @@ GameObject:
   - component: {fileID: 3496871281520739168}
   - component: {fileID: 7825227525629563399}
   - component: {fileID: 883148912346387882}
-  - component: {fileID: 2182010325498279280}
   m_Layer: 0
   m_Name: Stair_8
   m_TagString: Untagged
@@ -9821,19 +9792,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &2182010325498279280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2988652804462499120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &3082614778762354225
 GameObject:
   m_ObjectHideFlags: 0
