@@ -1,5 +1,25 @@
 # OKOLITSA Daily Log
 
+## 2026-07-16 — E01-T2 Candle Interaction
+
+Implemented the first interactable candle for Episode 01: "Light Went Out".
+
+### Added
+- Candle_01 scene object
+- Candle body, flame visual, and candle point light
+- CandleInteractable.cs
+- Interaction through existing PlayerInteraction / IInteractable system
+
+### Test
+- Player can turn apartment lights off with debug key L.
+- Player can approach the candle and press E.
+- Candle flame visual appears.
+- Candle point light turns on.
+- Repeated interaction does not break the candle state.
+
+### Next
+Connect the candle lighting event to the Episode 01 state controller.
+
 ## 2026-05-05 - My birthday is coming soon!
 
 ..so I will continue to work on my game.
