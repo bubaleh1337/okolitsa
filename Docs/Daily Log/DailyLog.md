@@ -4,7 +4,7 @@
 
 - Implemented the first state controller for Episode 01: "Light Went Out".
 - Implemented the first apartment disturbance for Episode 01: "Light Went Out".
-
+- Implemented the window/balcony impact event for Episode 01: "Light Went Out".
 
 ### Added
 - Episode01LightWentOutController.cs
@@ -15,6 +15,11 @@
 - Disturbance object movement after candle lighting
 - Delayed disturbance trigger from Episode01LightWentOutController
 - Debug logs for first disturbance state
+- Episode01WindowImpactController.cs
+- Window impact event after the first apartment disturbance
+- Optional 3D audio source near the balcony/window
+- Optional visual shake support for future balcony/window objects
+- Episode controller state tracking for window impact completion
 
 ### Test
 - Episode starts automatically in Play Mode.
@@ -26,9 +31,15 @@
 - Player can light Candle_01 through interaction.
 - First disturbance triggers after candle lighting.
 - Disturbance prop changes position/rotation once.
+- Episode starts automatically.
+- Apartment lights turn off after the configured delay.
+- Player can light Candle_01 through interaction.
+- First disturbance triggers after candle lighting.
+- Window impact triggers after the first disturbance.
+- Episode logs show the full sequence.
 
 ### Next
-Add a window or balcony impact event after the first disturbance.
+Add a simple ending beat for the episode: light returns, but the apartment remains unsafe.
 
 ## 2026-07-16 — E01-T2 Candle Interaction
 
