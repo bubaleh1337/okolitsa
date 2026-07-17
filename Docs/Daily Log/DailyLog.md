@@ -1,5 +1,24 @@
 # OKOLITSA Daily Log
 
+## 2026-07-17 — E01-T3 Episode State Controller
+
+Implemented the first state controller for Episode 01: "Light Went Out".
+
+### Added
+- Episode01LightWentOutController.cs
+- Automatic apartment power failure after a short delay
+- Candle-lit state detection after the power failure
+- Debug logs for episode start, power failure, and candle progress
+
+### Test
+- Episode starts automatically in Play Mode.
+- Apartment lights turn off after the configured delay.
+- Candle can be lit through the existing interaction system.
+- Episode controller detects when the candle is lit.
+
+### Next
+Add the first apartment disturbance after the candle is lit.
+
 ## 2026-07-16 — E01-T2 Candle Interaction
 
 Implemented the first interactable candle for Episode 01: "Light Went Out".
