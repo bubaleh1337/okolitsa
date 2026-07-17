@@ -2,22 +2,33 @@
 
 ## 2026-07-17 — E01-T3 Episode State Controller
 
-Implemented the first state controller for Episode 01: "Light Went Out".
+- Implemented the first state controller for Episode 01: "Light Went Out".
+- Implemented the first apartment disturbance for Episode 01: "Light Went Out".
+
 
 ### Added
 - Episode01LightWentOutController.cs
 - Automatic apartment power failure after a short delay
 - Candle-lit state detection after the power failure
 - Debug logs for episode start, power failure, and candle progress
+- Episode01DisturbanceController.cs
+- Disturbance object movement after candle lighting
+- Delayed disturbance trigger from Episode01LightWentOutController
+- Debug logs for first disturbance state
 
 ### Test
 - Episode starts automatically in Play Mode.
 - Apartment lights turn off after the configured delay.
 - Candle can be lit through the existing interaction system.
 - Episode controller detects when the candle is lit.
+- Episode starts automatically.
+- Apartment lights turn off after the configured delay.
+- Player can light Candle_01 through interaction.
+- First disturbance triggers after candle lighting.
+- Disturbance prop changes position/rotation once.
 
 ### Next
-Add the first apartment disturbance after the candle is lit.
+Add a window or balcony impact event after the first disturbance.
 
 ## 2026-07-16 — E01-T2 Candle Interaction
 

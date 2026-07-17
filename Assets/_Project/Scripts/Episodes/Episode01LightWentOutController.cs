@@ -7,9 +7,11 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
     [Header("Episode References")] // Groups required scene references in the Inspector.
     [SerializeField] private ApartmentLightFailureController apartmentLightController; // Controls apartment power state.
     [SerializeField] private CandleInteractable candle; // Candle that the player must light during the episode.
+    [SerializeField] private Episode01DisturbanceController firstDisturbanceController; // First apartment disturbance after candle lighting.
 
     [Header("Episode Timing")] // Groups timing settings in the Inspector.
     [SerializeField] private float powerFailureDelay = 4f; // Delay before the apartment power fails.
+    [SerializeField] private float disturbanceDelayAfterCandleLit = 1.5f; // Delay before the first disturbance after candle lighting.
 
     [Header("Episode Start")] // Groups start behavior settings in the Inspector.
     [SerializeField] private bool startEpisodeOnPlay = true; // Starts the episode automatically when Play Mode begins.
@@ -18,8 +20,10 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
     [Header("Debug State")] // Shows internal episode state in the Inspector.
     [SerializeField] private bool hasPowerFailed; // Stores whether the power failure already happened.
     [SerializeField] private bool hasRegisteredCandleLit; // Stores whether the candle lighting event was already registered.
+    [SerializeField] private bool hasTriggeredFirstDisturbance; // Stores whether the first disturbance already happened.
 
     private Coroutine episodeRoutine; // Stores the currently running episode coroutine.
+    private Coroutine disturbanceRoutine; // Stores the currently running disturbance coroutine.
 
     private void Start() // Runs once when the scene starts.
     {
@@ -43,11 +47,17 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
     {
         if (episodeRoutine != null) // Checks if the episode coroutine is already running.
         {
-            StopCoroutine(episodeRoutine); // Stops the previous coroutine to avoid duplicate events.
+            StopCoroutine(episodeRoutine); // Stops the previous coroutine to avoid duplicate power failure events.
+        }
+
+        if (disturbanceRoutine != null) // Checks if the disturbance coroutine is already running.
+        {
+            StopCoroutine(disturbanceRoutine); // Stops the previous coroutine to avoid duplicate disturbance events.
         }
 
         hasPowerFailed = false; // Resets power failure state.
         hasRegisteredCandleLit = false; // Resets candle progress state.
+        hasTriggeredFirstDisturbance = false; // Resets first disturbance state.
 
         episodeRoutine = StartCoroutine(EpisodeRoutine()); // Starts the timed episode sequence.
 
@@ -90,7 +100,7 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
 
         if (hasRegisteredCandleLit) // Checks if the candle event was already registered.
         {
-            return; // Stops the method to avoid repeated logs.
+            return; // Stops the method to avoid repeated logs and repeated disturbance starts.
         }
 
         if (candle == null) // Checks if the candle reference is missing.
@@ -111,6 +121,35 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
         hasRegisteredCandleLit = true; // Stores that the candle objective is complete.
 
         Debug.Log("Episode 01: Candle lit. Temporary light restored."); // Logs the completed candle step.
+
+        disturbanceRoutine = StartCoroutine(FirstDisturbanceRoutine()); // Starts the delayed disturbance event.
+    }
+
+    private IEnumerator FirstDisturbanceRoutine() // Waits and then triggers the first apartment disturbance.
+    {
+        yield return new WaitForSeconds(disturbanceDelayAfterCandleLit); // Waits after the candle is lit.
+
+        TriggerFirstDisturbance(); // Triggers the first apartment disturbance.
+    }
+
+    private void TriggerFirstDisturbance() // Starts the first disturbance event.
+    {
+        if (hasTriggeredFirstDisturbance) // Checks if the first disturbance already happened.
+        {
+            return; // Stops the method to prevent duplicates.
+        }
+
+        if (firstDisturbanceController == null) // Checks if the disturbance controller is missing.
+        {
+            Debug.LogWarning("Episode01LightWentOutController: First Disturbance Controller is not assigned."); // Shows a warning in Console.
+            return; // Stops safely if no disturbance controller exists.
+        }
+
+        hasTriggeredFirstDisturbance = true; // Stores that the first disturbance has happened.
+
+        firstDisturbanceController.PlayDisturbance(); // Runs the first apartment disturbance.
+
+        Debug.Log("Episode 01: First disturbance completed."); // Logs that the first disturbance was triggered.
     }
 
     private void TurnApartmentPowerOnForStart() // Ensures the apartment starts with power enabled.
