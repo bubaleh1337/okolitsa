@@ -9,6 +9,7 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
     [SerializeField] private CandleInteractable candle; // Candle that the player must light during the episode.
     [SerializeField] private Episode01DisturbanceController firstDisturbanceController; // First apartment disturbance after candle lighting.
     [SerializeField] private Episode01WindowImpactController windowImpactController; // Window or balcony impact after the first disturbance.
+    [SerializeField] private EpisodeObjectiveTextController objectiveTextController; // UI controller used to display temporary prototype objectives.
 
     [Header("Episode Timing")] // Groups timing settings in the Inspector.
     [SerializeField] private float powerFailureDelay = 7f; // Delay before the apartment power fails.
@@ -24,6 +25,16 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
     [SerializeField] private bool returnPowerAtEnd = true; // Defines whether apartment power returns at the end of the episode.
     [SerializeField] private int endingPowerFlickerCount = 3; // Defines how many times the lights flicker before returning.
     [SerializeField] private float endingPowerFlickerInterval = 0.35f; // Defines how fast the final light flicker happens.
+
+    [Header("Objective Text")] // Groups temporary objective text settings in the Inspector.
+    [SerializeField] private string objectiveAfterPowerFailure = "Find a candle."; // Objective shown after the power fails.
+    [SerializeField] private string objectiveAfterCandleLit = "Stay near the light."; // Objective shown after the candle is lit.
+    [SerializeField] private string objectiveAfterDisturbance = "Something moved."; // Objective shown after the first disturbance.
+    [SerializeField] private string objectiveAfterWindowImpact = "The balcony door."; // Objective shown after the window impact.
+    [SerializeField] private string objectiveAfterCandleExtinguished = "The candle went out."; // Objective shown after the candle is blown out.
+    [SerializeField] private string objectiveAfterPowerReturned = "The power is back."; // Objective shown after power returns.
+    [SerializeField] private string objectiveEpisodeComplete = "The apartment is not safe."; // Final objective message.
+    [SerializeField] private float finalObjectiveDuration = 5f; // Duration of the final objective message.
 
     [Header("Episode Start")] // Groups start behavior settings in the Inspector.
     [SerializeField] private bool startEpisodeOnPlay = true; // Starts the episode automatically when Play Mode begins.
@@ -50,6 +61,11 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
             TurnApartmentPowerOnForStart(); // Turns apartment lights on before the failure event.
         }
 
+        if (objectiveTextController != null) // Checks if objective UI is assigned.
+        {
+            objectiveTextController.ClearObjective(); // Clears objective text at episode start.
+        }
+
         if (startEpisodeOnPlay) // Checks if the episode should begin automatically.
         {
             StartEpisode(); // Starts the episode flow.
@@ -71,6 +87,8 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
         hasTriggeredWindowImpact = false; // Resets window impact state.
         hasExtinguishedCandle = false; // Resets candle extinguish state.
         hasCompletedEpisode = false; // Resets episode completion state.
+
+        ClearObjectiveText(); // Clears any old objective text.
 
         episodeRoutine = StartCoroutine(EpisodeRoutine()); // Starts the timed episode sequence.
 
@@ -100,6 +118,8 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
         apartmentLightController.TurnPowerOff(); // Turns off all apartment lights through the existing light system.
 
         hasPowerFailed = true; // Stores that the power failure has happened.
+
+        ShowObjectiveText(objectiveAfterPowerFailure); // Tells the player to find a candle.
 
         Debug.Log("Episode 01: Power failed."); // Logs the power failure event.
     }
@@ -133,6 +153,8 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
     {
         hasRegisteredCandleLit = true; // Stores that the candle objective is complete.
 
+        ShowObjectiveText(objectiveAfterCandleLit); // Shows the next temporary objective.
+
         Debug.Log("Episode 01: Candle lit. Temporary light restored."); // Logs the completed candle step.
 
         disturbanceRoutine = StartCoroutine(FirstDisturbanceRoutine()); // Starts the delayed disturbance event.
@@ -162,6 +184,8 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
 
         firstDisturbanceController.PlayDisturbance(); // Runs the first apartment disturbance.
 
+        ShowObjectiveText(objectiveAfterDisturbance); // Shows the disturbance objective text.
+
         Debug.Log("Episode 01: First disturbance completed."); // Logs that the first disturbance was triggered.
 
         windowImpactRoutine = StartCoroutine(WindowImpactRoutine()); // Starts the delayed window impact event.
@@ -190,6 +214,8 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
         hasTriggeredWindowImpact = true; // Stores that the window impact has happened.
 
         windowImpactController.PlayImpact(); // Runs the window impact event.
+
+        ShowObjectiveText(objectiveAfterWindowImpact); // Points player attention toward the balcony door.
 
         Debug.Log("Episode 01: Window impact completed."); // Logs that the window impact was triggered.
 
@@ -226,6 +252,8 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
         candle.ExtinguishCandle(); // Turns off the candle flame and candle light.
 
         hasExtinguishedCandle = true; // Stores that the candle was extinguished.
+
+        ShowObjectiveText(objectiveAfterCandleExtinguished); // Shows that the candle has gone out.
 
         Debug.Log("Episode 01: Candle was blown out by the window impact."); // Logs the candle blowout beat.
     }
@@ -269,6 +297,8 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
 
         apartmentLightController.TurnPowerOn(true); // Leaves apartment power on and plays the power-on sound.
 
+        ShowObjectiveText(objectiveAfterPowerReturned); // Shows that power returned.
+
         Debug.Log("Episode 01: Power returned."); // Logs that the apartment power returned.
     }
 
@@ -280,6 +310,8 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
         }
 
         hasCompletedEpisode = true; // Stores that the episode has completed.
+
+        ShowTemporaryObjectiveText(objectiveEpisodeComplete, finalObjectiveDuration); // Shows the final unsafe apartment message.
 
         Debug.Log("Episode 01: Completed. Power returned, but the apartment is not safe."); // Logs the final episode state.
     }
@@ -293,6 +325,36 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
         }
 
         apartmentLightController.TurnPowerOn(false); // Turns apartment lights on before the episode starts without playing sound.
+    }
+
+    private void ShowObjectiveText(string message) // Shows a persistent objective text message.
+    {
+        if (objectiveTextController == null) // Checks if the objective text controller is missing.
+        {
+            return; // Stops safely because objective UI is optional.
+        }
+
+        objectiveTextController.ShowObjective(message); // Sends the objective message to the UI controller.
+    }
+
+    private void ShowTemporaryObjectiveText(string message, float duration) // Shows a temporary objective text message.
+    {
+        if (objectiveTextController == null) // Checks if the objective text controller is missing.
+        {
+            return; // Stops safely because objective UI is optional.
+        }
+
+        objectiveTextController.ShowTemporaryObjective(message, duration); // Sends the temporary message to the UI controller.
+    }
+
+    private void ClearObjectiveText() // Clears objective text if available.
+    {
+        if (objectiveTextController == null) // Checks if the objective text controller is missing.
+        {
+            return; // Stops safely because objective UI is optional.
+        }
+
+        objectiveTextController.ClearObjective(); // Clears the current objective text.
     }
 
     private void StopRunningRoutines() // Stops all running episode routines before restarting the episode.

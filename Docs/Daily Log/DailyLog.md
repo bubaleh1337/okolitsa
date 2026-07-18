@@ -1,10 +1,13 @@
 # OKOLITSA Daily Log
 
 ## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish — E01-T8 Controlled Flicker Audio
+ — E01-T9 Objective Text Prototype
 
 - Implemented the ending beat for Episode 01: "Light Went Out".
 - Polished Episode 01: "Light Went Out" with slower pacing, candle blowout, and audio hooks.
 - Fixed the light flicker audio timing in Episode 01.
+- Added temporary objective text for Episode 01: "Light Went Out".
+
 
 ### Added
 - Delayed ending beat after the balcony/window impact
@@ -23,6 +26,11 @@
 - Added separate power and flicker AudioSource references.
 - Flicker sound now starts when visual flicker begins.
 - Flicker sound now stops before stable power returns.
+- UI_Episode canvas
+- TXT_EpisodeObjective legacy UI text object
+- EpisodeObjectiveTextController.cs
+- Objective Text Controller reference in Episode01LightWentOutController
+- Objective messages for major episode beats
 
 
 ### Test
@@ -44,9 +52,17 @@
 - Flicker sound no longer continues after lights stabilize.
 - Power-on sound plays after flicker audio stops.
 - Episode 01 ending beat feels cleaner and more synchronized.
+- Objective text appears correctly in the top-left corner.
+- Objective updates after the apartment power failure.
+- Objective updates after candle lighting.
+- Objective updates after first disturbance.
+- Objective updates after balcony/window impact.
+- Objective updates after candle blowout.
+- Objective updates after power return.
+- Final message appears when the episode completes.
 
 ### Next
-Run a full pacing pass and adjust timing/audio volume for the complete episode.
+Add an interaction prompt so the player understands when an object can be used.
 
 ## 2026-07-17 — E01-T3 Episode State Controller
 
