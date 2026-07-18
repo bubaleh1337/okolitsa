@@ -6720,6 +6720,9 @@ MonoBehaviour:
   openAngle: 90
   rotationAxis: {x: 0, y: 1, z: 0}
   rotationSpeed: 180
+  autoClose: 1
+  autoCloseDelay: 6
+  resetAutoCloseTimerOnInteract: 1
   audioSource: {fileID: 271228781}
   openClip: {fileID: 8300000, guid: ac00072d99b732248a49625b05fa9d00, type: 3}
   closeClip: {fileID: 8300000, guid: ad3ecf9cee9211c4ebd7a059b8d2558d, type: 3}
@@ -44615,6 +44618,9 @@ MonoBehaviour:
   openAngle: -90
   rotationAxis: {x: 0, y: 1, z: 0}
   rotationSpeed: 180
+  autoClose: 1
+  autoCloseDelay: 6
+  resetAutoCloseTimerOnInteract: 1
   audioSource: {fileID: 1174002044}
   openClip: {fileID: 8300000, guid: ac00072d99b732248a49625b05fa9d00, type: 3}
   closeClip: {fileID: 8300000, guid: ad3ecf9cee9211c4ebd7a059b8d2558d, type: 3}
@@ -44831,6 +44837,9 @@ MonoBehaviour:
   openAngle: 90
   rotationAxis: {x: 0, y: 1, z: 0}
   rotationSpeed: 180
+  autoClose: 1
+  autoCloseDelay: 10
+  resetAutoCloseTimerOnInteract: 1
   audioSource: {fileID: 1197852592}
   openClip: {fileID: 8300000, guid: 25b0e328ad6d649448f48c4acb0db2fa, type: 3}
   closeClip: {fileID: 8300000, guid: ad3ecf9cee9211c4ebd7a059b8d2558d, type: 3}
@@ -95326,6 +95335,9 @@ MonoBehaviour:
   openAngle: 90
   rotationAxis: {x: 0, y: 1, z: 0}
   rotationSpeed: 180
+  autoClose: 1
+  autoCloseDelay: 6
+  resetAutoCloseTimerOnInteract: 1
   audioSource: {fileID: 4796265880595566224}
   openClip: {fileID: 8300000, guid: 25b0e328ad6d649448f48c4acb0db2fa, type: 3}
   closeClip: {fileID: 8300000, guid: ad3ecf9cee9211c4ebd7a059b8d2558d, type: 3}

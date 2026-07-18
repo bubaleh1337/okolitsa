@@ -11,6 +11,7 @@
 - Added a trigger zone for starting Episode 01: "Light Went Out".
 - Adjusted the Player collision setup after removing the redundant Capsule Collider.
 - Fixed visible apartment bulb meshes during power failure.
+- Added automatic closing behavior to interactable doors.
 
 
 ### Added
@@ -60,6 +61,10 @@
 - Added apartment bulb Mesh Renderers to the Apartment Light Failure Controller.
 - Created and assigned a darker bulb-off material.
 - Reduced visible bulb scale for a less artificial look.
+- Updated DoorInteractable.cs with optional auto-close behavior.
+- Doors can now close automatically after a configurable delay.
+- Manual closing cancels the pending auto-close timer.
+- Existing open/close interaction behavior remains unchanged.
 
 ### Test
 - Episode starts automatically.
@@ -110,6 +115,11 @@
 - Apartment bulb meshes no longer stay bright yellow when power fails.
 - Bulbs become dark when lights are off.
 - Bulbs return to the warm on-material when power returns.
+- Doors open through E interaction.
+- Doors close automatically after the configured delay.
+- Manual close still works.
+- Door audio still plays.
+- Episode 01 systems still work.
 
 ### Next
 Run a full episode pass from outside the apartment and tune the trigger position if needed.
