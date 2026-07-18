@@ -9664,7 +9664,7 @@ Transform:
   m_GameObject: {fileID: 332395275}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 104.27, y: 15.726, z: 164.13}
+  m_LocalPosition: {x: 101.24, y: 15.308, z: 151.379}
   m_LocalScale: {x: 0.6, y: 0.8, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10169,6 +10169,77 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &349024595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 349024598}
+  - component: {fileID: 349024597}
+  - component: {fileID: 349024596}
+  m_Layer: 0
+  m_Name: Episode01_StartTrigger_Apartment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &349024596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349024595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23ed1689cc20054180568d91a7f659d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  episodeController: {fileID: 415085409}
+  playerRoot: {fileID: 332395279}
+  startOnlyOnce: 1
+  disableTriggerAfterStart: 1
+  hasStarted: 0
+--- !u!65 &349024597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349024595}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 2.4, z: 2.5}
+  m_Center: {x: 0, y: 1.2, z: 0}
+--- !u!4 &349024598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349024595}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 103.328, y: 15.941, z: 162.24}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &350399240
 Mesh:
   m_ObjectHideFlags: 0
@@ -12398,7 +12469,7 @@ MonoBehaviour:
   objectiveAfterPowerReturned: The power is back.
   objectiveEpisodeComplete: The apartment is not safe.
   finalObjectiveDuration: 5
-  startEpisodeOnPlay: 1
+  startEpisodeOnPlay: 0
   forcePowerOnAtStart: 1
   hasPowerFailed: 0
   hasRegisteredCandleLit: 0
@@ -108219,6 +108290,7 @@ SceneRoots:
   - {fileID: 710848344}
   - {fileID: 1029153416}
   - {fileID: 992029779}
+  - {fileID: 349024598}
   - {fileID: 415085408}
   - {fileID: 1367188892}
   - {fileID: 663364812}

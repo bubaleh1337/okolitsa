@@ -1,6 +1,6 @@
 # OKOLITSA Daily Log
 
-## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish — E01-T8 Controlled Flicker Audio — E01-T9 Objective Text Prototype — E01-T10 Interaction Prompt UI — E01-T11 Stairwell Flickering Lamp Audio
+## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish — E01-T8 Controlled Flicker Audio — E01-T9 Objective Text Prototype — E01-T10 Interaction Prompt UI — E01-T11 Stairwell Flickering Lamp Audio — E01-T12 Episode Start Trigger
 
 - Implemented the ending beat for Episode 01: "Light Went Out".
 - Polished Episode 01: "Light Went Out" with slower pacing, candle blowout, and audio hooks.
@@ -8,7 +8,7 @@
 - Added temporary objective text for Episode 01: "Light Went Out".
 - Added a temporary interaction prompt for interactable objects.
 - Added looping spatial audio to the flickering stairwell lamp near the player's apartment.
-
+- Added a trigger zone for starting Episode 01: "Light Went Out".
 
 ### Added
 - Delayed ending beat after the balcony/window impact
@@ -38,11 +38,17 @@
 - AudioSource on Stairwell_FlickeringLamp_6
 - Looping flicker audio assigned to the stairwell flickering lamp
 - 3D spatial audio settings for localized electrical buzzing
+- EpisodeStartTrigger.cs
+- Episode01_StartTrigger_Apartment scene object
+- Box Collider trigger for apartment entry
+- Player-based trigger detection
 
 ### Changed
 - PlayerInteraction now checks the current interactable target every frame.
 - PlayerInteraction shows "E — Interact" when the player looks at an interactable object.
 - PlayerInteraction hides the prompt when no interactable object is targeted.
+- Episode 01 no longer starts automatically on Play.
+- Episode 01 now starts when the player enters the apartment trigger zone.
 
 ### Test
 - Episode starts automatically.
@@ -81,9 +87,13 @@
 - Audio is localized near the stairwell lamp.
 - Audio fades with distance.
 - Sound does not overpower the Episode 01 audio events.
+- Episode does not start immediately after pressing Play.
+- Episode starts after the player enters the apartment trigger.
+- Apartment lights turn off after the configured delay.
+- Full episode sequence still works after trigger activation.
 
 ### Next
-Run a full episode pass with all UI, audio, lighting, and interaction systems active.
+Run a full episode pass from outside the apartment and tune the trigger position if needed.
 
 ## 2026-07-17 — E01-T3 Episode State Controller
 
