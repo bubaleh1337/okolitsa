@@ -9849,9 +9849,14 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 4294967295
-  groundCheckDistance: 1.4
+  groundCheckDistance: 0.6
   walkStepInterval: 0.55
   runStepInterval: 0.32
+  stairDescentStepInterval: 0.65
+  minimumHorizontalSpeedForSteps: 0.05
+  minimumAirTimeForLandingSound: 0.22
+  minimumFallSpeedForLandingSound: 3.5
+  stepDelayAfterLanding: 0.18
   runKey: 304
   jumpKey: 32
   minPitch: 0.95

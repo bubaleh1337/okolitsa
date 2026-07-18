@@ -1,6 +1,7 @@
 # OKOLITSA Daily Log
 
-## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish — E01-T8 Controlled Flicker Audio — E01-T9 Objective Text Prototype — E01-T10 Interaction Prompt UI — E01-T11 Stairwell Flickering Lamp Audio — E01-T12 Episode Start Trigger 
+## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish — E01-T8 Controlled Flicker Audio — E01-T9 Objective Text Prototype — E01-T10 Interaction Prompt UI — E01-T11 Stairwell Flickering Lamp Audio — E01-T12 Episode Start Trigger — E01-T15 Stair Descent Footstep Cadence
+
 
 - Implemented the ending beat for Episode 01: "Light Went Out".
 - Polished Episode 01: "Light Went Out" with slower pacing, candle blowout, and audio hooks.
@@ -12,6 +13,7 @@
 - Adjusted the Player collision setup after removing the redundant Capsule Collider.
 - Fixed visible apartment bulb meshes during power failure.
 - Added automatic closing behavior to interactable doors.
+- Fixed unnatural rapid footstep sounds while descending stairs.
 
 
 ### Added
@@ -65,6 +67,10 @@
 - Doors can now close automatically after a configurable delay.
 - Manual closing cancels the pending auto-close timer.
 - Existing open/close interaction behavior remains unchanged.
+- Updated PlayerFootsteps.cs to use horizontal movement for step validation.
+- Added slower stair descent footstep interval.
+- Added landing sound filtering to prevent small stair contacts from triggering landing spam.
+- Reduced ground check distance for the current prototype-scale player.
 
 ### Test
 - Episode starts automatically.
@@ -120,6 +126,11 @@
 - Manual close still works.
 - Door audio still plays.
 - Episode 01 systems still work.
+- Walking on flat ground still sounds normal.
+- Running on flat ground still sounds faster.
+- Descending stairs no longer sounds like rapid running.
+- Small stair contacts no longer spam landing sounds.
+- Jump and landing sounds still work for real jumps.
 
 ### Next
 Run a full episode pass from outside the apartment and tune the trigger position if needed.
