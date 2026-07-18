@@ -11,15 +11,19 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
     [SerializeField] private Episode01WindowImpactController windowImpactController; // Window or balcony impact after the first disturbance.
 
     [Header("Episode Timing")] // Groups timing settings in the Inspector.
-    [SerializeField] private float powerFailureDelay = 4f; // Delay before the apartment power fails.
-    [SerializeField] private float disturbanceDelayAfterCandleLit = 1.5f; // Delay before the first disturbance after candle lighting.
-    [SerializeField] private float windowImpactDelayAfterDisturbance = 2f; // Delay before the window impact after the first disturbance.
-    [SerializeField] private float endingDelayAfterWindowImpact = 2f; // Delay before the ending beat after the window impact.
+    [SerializeField] private float powerFailureDelay = 7f; // Delay before the apartment power fails.
+    [SerializeField] private float disturbanceDelayAfterCandleLit = 5f; // Delay before the first disturbance after candle lighting.
+    [SerializeField] private float windowImpactDelayAfterDisturbance = 6f; // Delay before the window impact after the first disturbance.
+    [SerializeField] private float endingDelayAfterWindowImpact = 4f; // Delay before the ending beat after the window impact.
+
+    [Header("Candle Blowout")] // Groups candle blowout settings in the Inspector.
+    [SerializeField] private bool extinguishCandleOnWindowImpact = true; // Defines whether the candle goes out after the window impact.
+    [SerializeField] private float candleExtinguishDelayAfterImpact = 0.15f; // Delay before the candle is blown out after the impact.
 
     [Header("Ending Power Return")] // Groups ending power return settings in the Inspector.
     [SerializeField] private bool returnPowerAtEnd = true; // Defines whether apartment power returns at the end of the episode.
-    [SerializeField] private int endingPowerFlickerCount = 2; // Defines how many times the lights flicker before returning.
-    [SerializeField] private float endingPowerFlickerInterval = 0.15f; // Defines how fast the final light flicker happens.
+    [SerializeField] private int endingPowerFlickerCount = 3; // Defines how many times the lights flicker before returning.
+    [SerializeField] private float endingPowerFlickerInterval = 0.35f; // Defines how fast the final light flicker happens.
 
     [Header("Episode Start")] // Groups start behavior settings in the Inspector.
     [SerializeField] private bool startEpisodeOnPlay = true; // Starts the episode automatically when Play Mode begins.
@@ -30,11 +34,13 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
     [SerializeField] private bool hasRegisteredCandleLit; // Stores whether the candle lighting event was already registered.
     [SerializeField] private bool hasTriggeredFirstDisturbance; // Stores whether the first disturbance already happened.
     [SerializeField] private bool hasTriggeredWindowImpact; // Stores whether the window impact already happened.
+    [SerializeField] private bool hasExtinguishedCandle; // Stores whether the candle was blown out.
     [SerializeField] private bool hasCompletedEpisode; // Stores whether the episode ending beat has completed.
 
     private Coroutine episodeRoutine; // Stores the currently running episode coroutine.
     private Coroutine disturbanceRoutine; // Stores the currently running disturbance coroutine.
     private Coroutine windowImpactRoutine; // Stores the currently running window impact coroutine.
+    private Coroutine candleExtinguishRoutine; // Stores the currently running candle extinguish coroutine.
     private Coroutine endingRoutine; // Stores the currently running ending coroutine.
 
     private void Start() // Runs once when the scene starts.
@@ -63,6 +69,7 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
         hasRegisteredCandleLit = false; // Resets candle progress state.
         hasTriggeredFirstDisturbance = false; // Resets first disturbance state.
         hasTriggeredWindowImpact = false; // Resets window impact state.
+        hasExtinguishedCandle = false; // Resets candle extinguish state.
         hasCompletedEpisode = false; // Resets episode completion state.
 
         episodeRoutine = StartCoroutine(EpisodeRoutine()); // Starts the timed episode sequence.
@@ -186,7 +193,41 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
 
         Debug.Log("Episode 01: Window impact completed."); // Logs that the window impact was triggered.
 
+        candleExtinguishRoutine = StartCoroutine(CandleExtinguishRoutine()); // Starts delayed candle blowout.
+
         endingRoutine = StartCoroutine(EpisodeEndingRoutine()); // Starts the final ending beat.
+    }
+
+    private IEnumerator CandleExtinguishRoutine() // Handles candle blowout after the window impact.
+    {
+        yield return new WaitForSeconds(candleExtinguishDelayAfterImpact); // Waits briefly after the impact.
+
+        ExtinguishCandleAfterImpact(); // Blows out the candle.
+    }
+
+    private void ExtinguishCandleAfterImpact() // Extinguishes the candle because of the impact/wind.
+    {
+        if (hasExtinguishedCandle) // Checks if the candle was already extinguished by this event.
+        {
+            return; // Stops the method to prevent duplicates.
+        }
+
+        if (!extinguishCandleOnWindowImpact) // Checks if candle blowout is disabled.
+        {
+            return; // Stops safely if the designer disabled this behavior.
+        }
+
+        if (candle == null) // Checks if the candle reference is missing.
+        {
+            Debug.LogWarning("Episode01LightWentOutController: Cannot extinguish candle because Candle is not assigned."); // Shows a warning in Console.
+            return; // Stops safely to avoid errors.
+        }
+
+        candle.ExtinguishCandle(); // Turns off the candle flame and candle light.
+
+        hasExtinguishedCandle = true; // Stores that the candle was extinguished.
+
+        Debug.Log("Episode 01: Candle was blown out by the window impact."); // Logs the candle blowout beat.
     }
 
     private IEnumerator EpisodeEndingRoutine() // Handles the final beat of Episode 01.
@@ -213,16 +254,20 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
 
         for (int i = 0; i < safeFlickerCount; i++) // Repeats the configured number of final flickers.
         {
-            apartmentLightController.TurnPowerOn(); // Briefly turns apartment lights on.
+            apartmentLightController.PlayFlickerSound(); // Plays unstable light flicker sound.
+
+            apartmentLightController.TurnPowerOn(false); // Briefly turns apartment lights on without power-on sound.
 
             yield return new WaitForSeconds(endingPowerFlickerInterval); // Waits before turning lights off again.
 
-            apartmentLightController.TurnPowerOff(); // Briefly turns apartment lights off again.
+            apartmentLightController.PlayFlickerSound(); // Plays unstable light flicker sound.
+
+            apartmentLightController.TurnPowerOff(false); // Briefly turns apartment lights off without power-off sound.
 
             yield return new WaitForSeconds(endingPowerFlickerInterval); // Waits before the next flicker.
         }
 
-        apartmentLightController.TurnPowerOn(); // Leaves apartment power on after the final flicker.
+        apartmentLightController.TurnPowerOn(true); // Leaves apartment power on and plays the power-on sound.
 
         Debug.Log("Episode 01: Power returned."); // Logs that the apartment power returned.
     }
@@ -247,7 +292,7 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
             return; // Stops safely to avoid errors.
         }
 
-        apartmentLightController.TurnPowerOn(); // Turns apartment lights on before the episode starts.
+        apartmentLightController.TurnPowerOn(false); // Turns apartment lights on before the episode starts without playing sound.
     }
 
     private void StopRunningRoutines() // Stops all running episode routines before restarting the episode.
@@ -267,6 +312,11 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
             StopCoroutine(windowImpactRoutine); // Stops the window impact routine.
         }
 
+        if (candleExtinguishRoutine != null) // Checks if the candle extinguish routine is running.
+        {
+            StopCoroutine(candleExtinguishRoutine); // Stops the candle extinguish routine.
+        }
+
         if (endingRoutine != null) // Checks if the ending routine is running.
         {
             StopCoroutine(endingRoutine); // Stops the ending routine.
@@ -275,6 +325,7 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
         episodeRoutine = null; // Clears the episode routine reference.
         disturbanceRoutine = null; // Clears the disturbance routine reference.
         windowImpactRoutine = null; // Clears the window impact routine reference.
+        candleExtinguishRoutine = null; // Clears the candle extinguish routine reference.
         endingRoutine = null; // Clears the ending routine reference.
     }
 }
