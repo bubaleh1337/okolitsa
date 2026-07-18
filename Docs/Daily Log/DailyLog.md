@@ -1,13 +1,13 @@
 # OKOLITSA Daily Log
 
-## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish — E01-T8 Controlled Flicker Audio
- — E01-T9 Objective Text Prototype — E01-T10 Interaction Prompt UI
+## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish — E01-T8 Controlled Flicker Audio — E01-T9 Objective Text Prototype — E01-T10 Interaction Prompt UI — E01-T11 Stairwell Flickering Lamp Audio
 
 - Implemented the ending beat for Episode 01: "Light Went Out".
 - Polished Episode 01: "Light Went Out" with slower pacing, candle blowout, and audio hooks.
 - Fixed the light flicker audio timing in Episode 01.
 - Added temporary objective text for Episode 01: "Light Went Out".
 - Added a temporary interaction prompt for interactable objects.
+- Added looping spatial audio to the flickering stairwell lamp near the player's apartment.
 
 
 ### Added
@@ -35,6 +35,9 @@
 - TXT_InteractionPrompt legacy UI text object
 - InteractionPromptController.cs
 - Interaction prompt reference in PlayerInteraction
+- AudioSource on Stairwell_FlickeringLamp_6
+- Looping flicker audio assigned to the stairwell flickering lamp
+- 3D spatial audio settings for localized electrical buzzing
 
 ### Changed
 - PlayerInteraction now checks the current interactable target every frame.
@@ -74,9 +77,13 @@
 - Door interaction still works.
 - Elevator button interaction still works.
 - No errors appear in Console.
+- Flicker audio plays automatically in Play Mode.
+- Audio is localized near the stairwell lamp.
+- Audio fades with distance.
+- Sound does not overpower the Episode 01 audio events.
 
 ### Next
-Run a full episode readability test from start to finish.
+Run a full episode pass with all UI, audio, lighting, and interaction systems active.
 
 ## 2026-07-17 — E01-T3 Episode State Controller
 
