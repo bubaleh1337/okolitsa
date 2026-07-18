@@ -12,12 +12,17 @@ namespace Okolitsa.Apartment // Keeps apartment-related systems grouped under th
         [SerializeField] private Material bulbOnMaterial; // Material used when the bulbs are powered.
         [SerializeField] private Material bulbOffMaterial; // Material used when the bulbs are not powered.
 
-        [Header("Audio")] // Groups apartment power audio settings in the Inspector.
-        [SerializeField] private AudioSource audioSource; // AudioSource used to play power and flicker sounds.
+        [Header("Power Audio")] // Groups one-shot apartment power audio settings in the Inspector.
+        [SerializeField] private AudioSource powerAudioSource; // AudioSource used to play power on/off sounds.
         [SerializeField] private AudioClip powerOffClip; // Sound played when apartment power turns off.
         [SerializeField] private AudioClip powerOnClip; // Sound played when apartment power turns on.
-        [SerializeField] private AudioClip flickerClip; // Sound played during unstable light flicker.
-        [SerializeField] private float audioVolume = 1f; // Volume multiplier for apartment power sounds.
+        [SerializeField] private float powerAudioVolume = 1f; // Volume multiplier for power on/off sounds.
+
+        [Header("Flicker Audio")] // Groups controlled flicker audio settings in the Inspector.
+        [SerializeField] private AudioSource flickerAudioSource; // AudioSource used only for controlled flicker sound.
+        [SerializeField] private AudioClip flickerClip; // Sound loop played while lights are flickering.
+        [SerializeField] private float flickerAudioVolume = 0.8f; // Volume multiplier for flicker sound.
+        [SerializeField] private bool loopFlickerAudio = true; // Defines whether flicker audio should loop while flickering.
 
         [Header("Debug")] // Groups debug controls in the Inspector.
         [SerializeField] private KeyCode testToggleKey = KeyCode.L; // Debug key used to toggle apartment power.
@@ -31,10 +36,12 @@ namespace Okolitsa.Apartment // Keeps apartment-related systems grouped under th
         {
             isPowerOn = startWithPowerOn; // Applies the configured starting power state.
 
-            if (audioSource == null) // Checks if AudioSource was not assigned manually.
+            if (powerAudioSource == null) // Checks if the power AudioSource was not assigned manually.
             {
-                audioSource = GetComponent<AudioSource>(); // Tries to find AudioSource on the same object.
+                powerAudioSource = GetComponent<AudioSource>(); // Tries to find an AudioSource on the same object.
             }
+
+            ConfigureFlickerAudioSource(); // Prepares the flicker AudioSource for controlled playback.
 
             ApplyLightState(); // Applies the starting light state without playing sound.
         }
@@ -72,9 +79,43 @@ namespace Okolitsa.Apartment // Keeps apartment-related systems grouped under th
             SetPowerState(!isPowerOn, true); // Switches to the opposite power state.
         }
 
-        public void PlayFlickerSound() // Plays a dedicated flicker sound without changing light state.
+        public void StartFlickerSound() // Starts controlled flicker audio.
         {
-            PlaySound(flickerClip); // Plays the assigned flicker clip.
+            if (flickerAudioSource == null) // Checks if there is no flicker AudioSource.
+            {
+                return; // Stops safely if flicker audio cannot be played.
+            }
+
+            if (flickerClip == null) // Checks if no flicker clip is assigned.
+            {
+                return; // Stops safely if no clip exists yet.
+            }
+
+            flickerAudioSource.clip = flickerClip; // Assigns the flicker clip to the controlled AudioSource.
+            flickerAudioSource.volume = flickerAudioVolume; // Applies the configured flicker volume.
+            flickerAudioSource.loop = loopFlickerAudio; // Applies the configured looping behavior.
+
+            if (flickerAudioSource.isPlaying) // Checks if the flicker sound is already playing.
+            {
+                return; // Avoids restarting the same sound unnecessarily.
+            }
+
+            flickerAudioSource.Play(); // Starts the controlled flicker sound.
+        }
+
+        public void StopFlickerSound() // Stops controlled flicker audio.
+        {
+            if (flickerAudioSource == null) // Checks if there is no flicker AudioSource.
+            {
+                return; // Stops safely if flicker audio cannot be stopped.
+            }
+
+            if (!flickerAudioSource.isPlaying) // Checks if the flicker sound is not playing.
+            {
+                return; // Stops safely because there is nothing to stop.
+            }
+
+            flickerAudioSource.Stop(); // Stops the flicker sound immediately.
         }
 
         private void SetPowerState(bool powerOn, bool playSound) // Applies a power state and optionally plays audio.
@@ -145,16 +186,29 @@ namespace Okolitsa.Apartment // Keeps apartment-related systems grouped under th
             }
         }
 
+        private void ConfigureFlickerAudioSource() // Prepares flicker audio playback settings.
+        {
+            if (flickerAudioSource == null) // Checks if flicker AudioSource was not assigned manually.
+            {
+                return; // Stops safely because flicker audio is optional.
+            }
+
+            flickerAudioSource.playOnAwake = false; // Prevents the flicker sound from playing when the scene starts.
+            flickerAudioSource.loop = loopFlickerAudio; // Applies looping behavior.
+            flickerAudioSource.volume = flickerAudioVolume; // Applies flicker volume.
+            flickerAudioSource.clip = flickerClip; // Assigns the flicker clip if available.
+        }
+
         private void PlayPowerStateSound() // Plays power on or power off sound.
         {
             AudioClip targetClip = isPowerOn ? powerOnClip : powerOffClip; // Chooses sound based on the current power state.
 
-            PlaySound(targetClip); // Plays the selected sound.
+            PlayPowerSound(targetClip); // Plays the selected sound.
         }
 
-        private void PlaySound(AudioClip clip) // Plays one sound if audio references are valid.
+        private void PlayPowerSound(AudioClip clip) // Plays one power sound if audio references are valid.
         {
-            if (audioSource == null) // Checks if there is no AudioSource.
+            if (powerAudioSource == null) // Checks if there is no power AudioSource.
             {
                 return; // Stops safely if audio cannot be played.
             }
@@ -164,7 +218,7 @@ namespace Okolitsa.Apartment // Keeps apartment-related systems grouped under th
                 return; // Stops safely if no clip exists yet.
             }
 
-            audioSource.PlayOneShot(clip, audioVolume); // Plays the selected sound once.
+            powerAudioSource.PlayOneShot(clip, powerAudioVolume); // Plays the selected sound once.
         }
     }
 }

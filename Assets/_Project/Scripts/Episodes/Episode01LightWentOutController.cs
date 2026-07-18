@@ -252,20 +252,20 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
 
         int safeFlickerCount = Mathf.Max(0, endingPowerFlickerCount); // Prevents negative flicker count values.
 
+        apartmentLightController.StartFlickerSound(); // Starts controlled flicker audio before the visual flicker begins.
+
         for (int i = 0; i < safeFlickerCount; i++) // Repeats the configured number of final flickers.
         {
-            apartmentLightController.PlayFlickerSound(); // Plays unstable light flicker sound.
-
             apartmentLightController.TurnPowerOn(false); // Briefly turns apartment lights on without power-on sound.
 
             yield return new WaitForSeconds(endingPowerFlickerInterval); // Waits before turning lights off again.
-
-            apartmentLightController.PlayFlickerSound(); // Plays unstable light flicker sound.
 
             apartmentLightController.TurnPowerOff(false); // Briefly turns apartment lights off without power-off sound.
 
             yield return new WaitForSeconds(endingPowerFlickerInterval); // Waits before the next flicker.
         }
+
+        apartmentLightController.StopFlickerSound(); // Stops flicker audio exactly before stable power returns.
 
         apartmentLightController.TurnPowerOn(true); // Leaves apartment power on and plays the power-on sound.
 

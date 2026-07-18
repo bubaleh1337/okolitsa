@@ -1,9 +1,10 @@
 # OKOLITSA Daily Log
 
-## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish
+## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish — E01-T8 Controlled Flicker Audio
 
 - Implemented the ending beat for Episode 01: "Light Went Out".
 - Polished Episode 01: "Light Went Out" with slower pacing, candle blowout, and audio hooks.
+- Fixed the light flicker audio timing in Episode 01.
 
 ### Added
 - Delayed ending beat after the balcony/window impact
@@ -18,6 +19,11 @@
 - Apartment power on audio hook
 - Apartment light flicker audio hook
 - Unstable power return sequence with flickering lights
+- Replaced one-shot flicker playback with controlled flicker audio playback.
+- Added separate power and flicker AudioSource references.
+- Flicker sound now starts when visual flicker begins.
+- Flicker sound now stops before stable power returns.
+
 
 ### Test
 - Episode starts automatically.
@@ -35,9 +41,12 @@
 - Candle is blown out after the impact.
 - Apartment lights flicker before returning.
 - Episode completion log appears.
+- Flicker sound no longer continues after lights stabilize.
+- Power-on sound plays after flicker audio stops.
+- Episode 01 ending beat feels cleaner and more synchronized.
 
 ### Next
-Run a full pacing test and adjust delays until the episode feels like a 2–3 minute playable scene.
+Run a full pacing pass and adjust timing/audio volume for the complete episode.
 
 ## 2026-07-17 — E01-T3 Episode State Controller
 
