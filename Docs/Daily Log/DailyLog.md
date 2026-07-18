@@ -1,6 +1,6 @@
 # OKOLITSA Daily Log
 
-## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish — E01-T8 Controlled Flicker Audio — E01-T9 Objective Text Prototype — E01-T10 Interaction Prompt UI — E01-T11 Stairwell Flickering Lamp Audio — E01-T12 Episode Start Trigger
+## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish — E01-T8 Controlled Flicker Audio — E01-T9 Objective Text Prototype — E01-T10 Interaction Prompt UI — E01-T11 Stairwell Flickering Lamp Audio — E01-T12 Episode Start Trigger 
 
 - Implemented the ending beat for Episode 01: "Light Went Out".
 - Polished Episode 01: "Light Went Out" with slower pacing, candle blowout, and audio hooks.
@@ -9,6 +9,8 @@
 - Added a temporary interaction prompt for interactable objects.
 - Added looping spatial audio to the flickering stairwell lamp near the player's apartment.
 - Added a trigger zone for starting Episode 01: "Light Went Out".
+- Adjusted the Player collision setup after removing the redundant Capsule Collider.
+
 
 ### Added
 - Delayed ending beat after the balcony/window impact
@@ -49,6 +51,11 @@
 - PlayerInteraction hides the prompt when no interactable object is targeted.
 - Episode 01 no longer starts automatically on Play.
 - Episode 01 now starts when the player enters the apartment trigger zone.
+- Kept Character Controller as the only movement collider.
+- Set Character Controller to a normal FPS body size:
+  - Height: 1.8
+  - Center Y: 0.9
+  - Radius: 0.3
 
 ### Test
 - Episode starts automatically.
@@ -91,6 +98,11 @@
 - Episode starts after the player enters the apartment trigger.
 - Apartment lights turn off after the configured delay.
 - Full episode sequence still works after trigger activation.
+- Player movement still works.
+- Player does not fall through floors.
+- Stairs still work.
+- Apartment trigger still starts Episode 01.
+- Interactions still work.
 
 ### Next
 Run a full episode pass from outside the apartment and tune the trigger position if needed.
