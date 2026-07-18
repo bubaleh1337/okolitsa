@@ -31187,7 +31187,7 @@ MonoBehaviour:
   audioSource: {fileID: 895417372}
   impactClip: {fileID: 8300000, guid: 7a34a42dba6e2524aa172acb62f1c4af, type: 3}
   impactVolume: 1
-  objectToShake: {fileID: 5563630132311080335}
+  objectToShake: {fileID: 1197852590}
   shakeDuration: 0.25
   shakeAmount: 0.035
   hasPlayed: 0

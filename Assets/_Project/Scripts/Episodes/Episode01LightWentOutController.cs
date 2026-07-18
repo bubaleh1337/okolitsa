@@ -14,6 +14,12 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
     [SerializeField] private float powerFailureDelay = 4f; // Delay before the apartment power fails.
     [SerializeField] private float disturbanceDelayAfterCandleLit = 1.5f; // Delay before the first disturbance after candle lighting.
     [SerializeField] private float windowImpactDelayAfterDisturbance = 2f; // Delay before the window impact after the first disturbance.
+    [SerializeField] private float endingDelayAfterWindowImpact = 2f; // Delay before the ending beat after the window impact.
+
+    [Header("Ending Power Return")] // Groups ending power return settings in the Inspector.
+    [SerializeField] private bool returnPowerAtEnd = true; // Defines whether apartment power returns at the end of the episode.
+    [SerializeField] private int endingPowerFlickerCount = 2; // Defines how many times the lights flicker before returning.
+    [SerializeField] private float endingPowerFlickerInterval = 0.15f; // Defines how fast the final light flicker happens.
 
     [Header("Episode Start")] // Groups start behavior settings in the Inspector.
     [SerializeField] private bool startEpisodeOnPlay = true; // Starts the episode automatically when Play Mode begins.
@@ -24,10 +30,12 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
     [SerializeField] private bool hasRegisteredCandleLit; // Stores whether the candle lighting event was already registered.
     [SerializeField] private bool hasTriggeredFirstDisturbance; // Stores whether the first disturbance already happened.
     [SerializeField] private bool hasTriggeredWindowImpact; // Stores whether the window impact already happened.
+    [SerializeField] private bool hasCompletedEpisode; // Stores whether the episode ending beat has completed.
 
     private Coroutine episodeRoutine; // Stores the currently running episode coroutine.
     private Coroutine disturbanceRoutine; // Stores the currently running disturbance coroutine.
     private Coroutine windowImpactRoutine; // Stores the currently running window impact coroutine.
+    private Coroutine endingRoutine; // Stores the currently running ending coroutine.
 
     private void Start() // Runs once when the scene starts.
     {
@@ -55,6 +63,7 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
         hasRegisteredCandleLit = false; // Resets candle progress state.
         hasTriggeredFirstDisturbance = false; // Resets first disturbance state.
         hasTriggeredWindowImpact = false; // Resets window impact state.
+        hasCompletedEpisode = false; // Resets episode completion state.
 
         episodeRoutine = StartCoroutine(EpisodeRoutine()); // Starts the timed episode sequence.
 
@@ -176,6 +185,58 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
         windowImpactController.PlayImpact(); // Runs the window impact event.
 
         Debug.Log("Episode 01: Window impact completed."); // Logs that the window impact was triggered.
+
+        endingRoutine = StartCoroutine(EpisodeEndingRoutine()); // Starts the final ending beat.
+    }
+
+    private IEnumerator EpisodeEndingRoutine() // Handles the final beat of Episode 01.
+    {
+        yield return new WaitForSeconds(endingDelayAfterWindowImpact); // Waits after the window impact.
+
+        if (returnPowerAtEnd) // Checks if the apartment power should return.
+        {
+            yield return StartCoroutine(ReturnPowerWithFlickerRoutine()); // Returns power with a short flicker sequence.
+        }
+
+        CompleteEpisode(); // Marks the episode as completed.
+    }
+
+    private IEnumerator ReturnPowerWithFlickerRoutine() // Returns apartment power with a short unstable flicker.
+    {
+        if (apartmentLightController == null) // Checks if the apartment light controller is missing.
+        {
+            Debug.LogWarning("Episode01LightWentOutController: Cannot return power because Apartment Light Controller is not assigned."); // Shows a warning in Console.
+            yield break; // Stops the coroutine safely.
+        }
+
+        int safeFlickerCount = Mathf.Max(0, endingPowerFlickerCount); // Prevents negative flicker count values.
+
+        for (int i = 0; i < safeFlickerCount; i++) // Repeats the configured number of final flickers.
+        {
+            apartmentLightController.TurnPowerOn(); // Briefly turns apartment lights on.
+
+            yield return new WaitForSeconds(endingPowerFlickerInterval); // Waits before turning lights off again.
+
+            apartmentLightController.TurnPowerOff(); // Briefly turns apartment lights off again.
+
+            yield return new WaitForSeconds(endingPowerFlickerInterval); // Waits before the next flicker.
+        }
+
+        apartmentLightController.TurnPowerOn(); // Leaves apartment power on after the final flicker.
+
+        Debug.Log("Episode 01: Power returned."); // Logs that the apartment power returned.
+    }
+
+    private void CompleteEpisode() // Marks the episode as completed.
+    {
+        if (hasCompletedEpisode) // Checks if the episode is already complete.
+        {
+            return; // Prevents duplicate completion.
+        }
+
+        hasCompletedEpisode = true; // Stores that the episode has completed.
+
+        Debug.Log("Episode 01: Completed. Power returned, but the apartment is not safe."); // Logs the final episode state.
     }
 
     private void TurnApartmentPowerOnForStart() // Ensures the apartment starts with power enabled.
@@ -206,8 +267,14 @@ public class Episode01LightWentOutController : MonoBehaviour // Controls Episode
             StopCoroutine(windowImpactRoutine); // Stops the window impact routine.
         }
 
+        if (endingRoutine != null) // Checks if the ending routine is running.
+        {
+            StopCoroutine(endingRoutine); // Stops the ending routine.
+        }
+
         episodeRoutine = null; // Clears the episode routine reference.
         disturbanceRoutine = null; // Clears the disturbance routine reference.
         windowImpactRoutine = null; // Clears the window impact routine reference.
+        endingRoutine = null; // Clears the ending routine reference.
     }
 }

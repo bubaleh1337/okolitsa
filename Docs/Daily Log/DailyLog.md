@@ -1,5 +1,28 @@
 # OKOLITSA Daily Log
 
+## 2026-07-18 — E01-T6 Episode Ending Beat
+
+Implemented the ending beat for Episode 01: "Light Went Out".
+
+### Added
+- Delayed ending beat after the balcony/window impact
+- Short unstable power flicker before electricity returns
+- Final episode completion state
+- Debug logs for power return and episode completion
+
+### Test
+- Episode starts automatically.
+- Apartment lights turn off after the configured delay.
+- Player can light Candle_01 through interaction.
+- First disturbance triggers after candle lighting.
+- Window/balcony impact triggers after the first disturbance.
+- Apartment power flickers and returns after the impact.
+- Candle remains lit.
+- Episode completion log appears.
+
+### Next
+Run a full 2–3 minute pacing test and decide whether the episode needs more delay, sound pressure, or a clearer player objective.
+
 ## 2026-07-17 — E01-T3 Episode State Controller
 
 - Implemented the first state controller for Episode 01: "Light Went Out".
