@@ -10,6 +10,7 @@
 - Added looping spatial audio to the flickering stairwell lamp near the player's apartment.
 - Added a trigger zone for starting Episode 01: "Light Went Out".
 - Adjusted the Player collision setup after removing the redundant Capsule Collider.
+- Fixed visible apartment bulb meshes during power failure.
 
 
 ### Added
@@ -56,6 +57,9 @@
   - Height: 1.8
   - Center Y: 0.9
   - Radius: 0.3
+- Added apartment bulb Mesh Renderers to the Apartment Light Failure Controller.
+- Created and assigned a darker bulb-off material.
+- Reduced visible bulb scale for a less artificial look.
 
 ### Test
 - Episode starts automatically.
@@ -103,6 +107,9 @@
 - Stairs still work.
 - Apartment trigger still starts Episode 01.
 - Interactions still work.
+- Apartment bulb meshes no longer stay bright yellow when power fails.
+- Bulbs become dark when lights are off.
+- Bulbs return to the warm on-material when power returns.
 
 ### Next
 Run a full episode pass from outside the apartment and tune the trigger position if needed.
