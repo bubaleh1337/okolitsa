@@ -1,12 +1,13 @@
 # OKOLITSA Daily Log
 
 ## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish — E01-T8 Controlled Flicker Audio
- — E01-T9 Objective Text Prototype
+ — E01-T9 Objective Text Prototype — E01-T10 Interaction Prompt UI
 
 - Implemented the ending beat for Episode 01: "Light Went Out".
 - Polished Episode 01: "Light Went Out" with slower pacing, candle blowout, and audio hooks.
 - Fixed the light flicker audio timing in Episode 01.
 - Added temporary objective text for Episode 01: "Light Went Out".
+- Added a temporary interaction prompt for interactable objects.
 
 
 ### Added
@@ -31,7 +32,14 @@
 - EpisodeObjectiveTextController.cs
 - Objective Text Controller reference in Episode01LightWentOutController
 - Objective messages for major episode beats
+- TXT_InteractionPrompt legacy UI text object
+- InteractionPromptController.cs
+- Interaction prompt reference in PlayerInteraction
 
+### Changed
+- PlayerInteraction now checks the current interactable target every frame.
+- PlayerInteraction shows "E — Interact" when the player looks at an interactable object.
+- PlayerInteraction hides the prompt when no interactable object is targeted.
 
 ### Test
 - Episode starts automatically.
@@ -60,9 +68,15 @@
 - Objective updates after candle blowout.
 - Objective updates after power return.
 - Final message appears when the episode completes.
+- Prompt appears when looking at Candle_01.
+- Prompt disappears when looking away.
+- Candle interaction still works.
+- Door interaction still works.
+- Elevator button interaction still works.
+- No errors appear in Console.
 
 ### Next
-Add an interaction prompt so the player understands when an object can be used.
+Run a full episode readability test from start to finish.
 
 ## 2026-07-17 — E01-T3 Episode State Controller
 
