@@ -1,5 +1,29 @@
 # OKOLITSA Daily Log
 
+## 2026-07-18 — E02-T1 First Night Narrative Breakdown
+
+Created the first narrative breakdown based on the new 20-page OKOLITSA vision draft.
+
+### Changed
+- Stopped treating the candle/light-failure prototype as the final story direction.
+- Defined the next playable target as "v0.2 — First Night Prototype".
+- Identified the real first playable flow:
+  - wake up
+  - check apartment
+  - balcony cigarette ritual
+  - field / grave observation
+  - reality break
+  - leave apartment
+  - stairwell descent
+  - rain outside
+  - move toward the cross
+
+### Kept
+- Existing apartment, stairwell, lighting, interaction, audio, and build systems remain useful as technical foundation.
+
+### Next
+Start restructuring the current Unity scene around the First Night sequence instead of the old candle quest prototype.
+
 ## 2026-07-18 — E01-T6 Episode Ending Beat — E01-T7 Pacing and Audio Polish — E01-T8 Controlled Flicker Audio — E01-T9 Objective Text Prototype — E01-T10 Interaction Prompt UI — E01-T11 Stairwell Flickering Lamp Audio — E01-T12 Episode Start Trigger — E01-T15 Stair Descent Footstep Cadence
 
 
