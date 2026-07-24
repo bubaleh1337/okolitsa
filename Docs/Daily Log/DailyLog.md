@@ -1,8 +1,9 @@
 # OKOLITSA Daily Log
 
-## 2026-07-24 — E02-T3B Bedside Table Blockout
+## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout
 
-Created a reusable bedside table blockout prefab for the First Night apartment.
+- Created a reusable bedside table blockout prefab for the First Night apartment.
+- Created modular blockout prefabs for the living-room CRT television area.
 
 ### Added
 - `PF_BedsideTable_Blockout`
@@ -11,20 +12,38 @@ Created a reusable bedside table blockout prefab for the First Night apartment.
 - Single root-level collision volume
 - `Socket_TopSurface` attachment point
 - Left and right bedside table instances beside the sofa-bed
+- `PF_TVStand_Blockout`
+- `PF_CRTTV_Blockout`
+- `MAT_Blockout_CRTPlastic`
+- `MAT_Blockout_CRTScreen`
+- `Socket_TVPlacement`
+- `Socket_DVDPlayer`
+- Separate `ScreenSurface` object for future display content
+- `TV_Set` scene composition near the balcony door
 
 ### Production Purpose
 - Establish the furniture composition surrounding Andrey's sleeping position.
 - Reserve future locations for cigarettes, lighter, medicine, bottles, and personal objects.
 - Keep the furniture replaceable without changing future prop placement logic.
+- Establish the television position required by the authored apartment layout.
+- Preserve a separate screen surface for the future animated DVD logo.
+- Keep the television, stand, and DVD player independently replaceable.
+- Validate the relationship between the sofa-bed, balcony entrance, and television corner.
+
 
 ### Test
 - Both table instances inherit changes from the prefab.
 - Player collision works.
 - Apartment paths remain accessible.
 - No new Console errors are present.
+- Television faces the sofa-bed.
+- Balcony access remains clear.
+- Player collision works.
+- Prefab instances remain connected to their source assets.
+- No new Console errors are present.
 
 ### Next
-Create the CRT television and TV stand blockout prefabs.
+Create the sideboard blockout and reserve locations for family photographs, service dishes, and collectible model cars.
 
 ## 2026-07-24 — E02-T3A Sofa-Bed Blockout
 
