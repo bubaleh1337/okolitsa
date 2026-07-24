@@ -1,9 +1,11 @@
 # OKOLITSA Daily Log
 
-## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout
+## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout
 
 - Created a reusable bedside table blockout prefab for the First Night apartment.
 - Created modular blockout prefabs for the living-room CRT television area.
+- Created a modular sideboard blockout prefab for the First Night apartment.
+
 
 ### Added
 - `PF_BedsideTable_Blockout`
@@ -20,6 +22,15 @@
 - `Socket_DVDPlayer`
 - Separate `ScreenSurface` object for future display content
 - `TV_Set` scene composition near the balcony door
+- `PF_Sideboard_Blockout`
+- `MAT_Blockout_Glass`
+- Closed lower storage section
+- Upper glass display section
+- Three internal display shelves
+- `Socket_DisplayShelf_01`
+- `Socket_DisplayShelf_02`
+- `Socket_DisplayShelf_03`
+- Single root-level collision volume
 
 ### Production Purpose
 - Establish the furniture composition surrounding Andrey's sleeping position.
@@ -29,6 +40,10 @@
 - Preserve a separate screen surface for the future animated DVD logo.
 - Keep the television, stand, and DVD player independently replaceable.
 - Validate the relationship between the sofa-bed, balcony entrance, and television corner.
+- Establish the sideboard as a major family-memory and environmental-storytelling object.
+- Reserve modular locations for Soviet service dishes, lace shelf liners, and family belongings.
+- Preserve closed lower storage for future collectible model cars and hidden narrative objects.
+- Establish wall composition for the grandmother photograph and strange painting.
 
 
 ### Test
@@ -41,9 +56,14 @@
 - Player collision works.
 - Prefab instances remain connected to their source assets.
 - No new Console errors are present.
+- Player collision works.
+- Apartment paths remain accessible.
+- Glass doors remain visibly transparent.
+- Prefab connection remains intact.
+- No new Console errors are present.
 
 ### Next
-Create the sideboard blockout and reserve locations for family photographs, service dishes, and collectible model cars.
+Create the grandmother photograph and strange painting blockout props.
 
 ## 2026-07-24 — E02-T3A Sofa-Bed Blockout
 
