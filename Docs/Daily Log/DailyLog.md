@@ -1,5 +1,35 @@
 # OKOLITSA Daily Log
 
+## 2026-07-24 — E02-T2 First Night Development Scene
+
+Created an isolated Unity scene for the authored First Night production work.
+
+### Added
+- `SCN_FirstNight_Dev`
+- First Night scene folder
+- Apartment blockout prefab folder
+- Blockout material folder
+- First Night Timeline folder
+- Narrative scripts folder
+- `__NARRATIVE/FN_FirstNight` scene hierarchy root
+
+### Changed
+- Disabled the old Episode 01 prototype sequence in the First Night development scene.
+
+### Preserved
+- The stable v0.1.1 prototype scene remains unchanged.
+- Existing lighting, interaction, doors, movement, audio, and environmental systems remain available.
+
+### Test
+- Player movement works.
+- Apartment and stairwell navigation work.
+- Door interaction and auto-close work.
+- Old Episode 01 does not start.
+- No Console errors are present.
+
+### Next
+Create the essential living-room furniture blockout required for the opening wake-up sequence.
+
 ## 2026-07-24 — First Night Sequence Map Locked
 
 Completed the narrative segmentation of the current OKOLITSA story draft.
