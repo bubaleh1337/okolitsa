@@ -192,3 +192,98 @@ Each sequence must use:
 - signals or explicit events;
 - reusable gameplay systems;
 - content stored separately from general-purpose systems.
+
+## Canonical Story Truth
+
+## Real-Event Narrative Foundation
+
+OKOLITSA is a fictional psychological horror game built on a substantial real-life foundation.
+
+### Real Sources
+
+The following elements are inspired by or based on real experiences:
+
+- the apartment and its unusual layout;
+- the apartment's connection to the author's great-grandmother;
+- family memories surrounding illness, death, and the discovery of the body;
+- Soviet furniture, household objects, photographs, and domestic rituals;
+- recurring sleep paralysis;
+- visual and auditory experiences associated with sleep paralysis;
+- stories and fears shared by members of the author's family.
+
+### Fictional Transformation
+
+The game is not a documentary reconstruction.
+
+Real memories may be:
+
+- combined;
+- reordered;
+- reassigned to fictional characters;
+- visually altered;
+- expanded through supernatural fiction;
+- used symbolically rather than literally.
+
+Andrey, the endless night, the post-mortem journey, Yrka, the hospital experiments, and the final supernatural structure belong to the fictional narrative.
+
+### Creative Principle
+
+Authenticity should come from specific domestic details, emotional truth, spatial memory, sound, and family history.
+
+The project should avoid relying on generic Soviet-horror decoration when a more specific real-life detail is available.
+
+### Public Positioning
+
+Recommended public wording:
+
+> Inspired by real events, family memories, personal experiences, and a real apartment.
+
+Exact addresses and identifying private information must not appear in public builds or promotional materials.
+
+### Endless Night
+
+The entire game takes place during one endless night.
+
+There is no normal daytime and no traditional day/night cycle. Narrative progression is represented through changing night phases, weather, environment states, sound, lighting, and supernatural escalation.
+
+### Andrey's Death
+
+Andrey dies from an accidental overdose during the opening night.
+
+He did not intend to die and does not understand that he is dead.
+
+The world experienced after this moment is a post-mortem or liminal reality in which physical spaces, memories, ghosts, and supernatural entities can overlap.
+
+Andrey and the player discover the truth only during the final reveal.
+
+### Apartment as a Memory Archive
+
+The apartment is a major narrative location and must contain interactive Soviet-era domestic objects, family belongings, photographs, albums, diaries, and personal documents.
+
+Objects should primarily support observation, memory, atmosphere, and environmental storytelling rather than arbitrary quest progression.
+
+### Numbered Lore Notes
+
+Lore notes use permanent sequential identifiers.
+
+Each note corresponds to a numbered journal slot. Empty slots remain visible so the player can understand that a note was missed.
+
+The note system must be data-driven and save progress using stable note IDs.
+
+Example:
+- NOTE-001
+- NOTE-002
+- NOTE-003
+
+### Lore Categories
+
+The shared note and journal system will support several content categories:
+
+- Andrey
+- Alexandra and family history
+- Apartment history
+- Black River district
+- Liza
+- Hospital records
+- Yrka research
+- Witness accounts

@@ -118,3 +118,84 @@ Cutscene scripts must not directly modify unrelated movement, interaction, camer
 Unity scenes represent large production spaces or development contexts, not individual story beats.
 
 Individual cutscenes and narrative beats are implemented with Timeline assets inside the appropriate gameplay scene.
+
+## Lore Asset Conventions
+
+### Note Identifiers
+
+Lore notes use permanent three-digit IDs:
+
+- `NOTE-001`
+- `NOTE-002`
+- `NOTE-010`
+
+IDs must not be reused or renumbered after a public build.
+
+### Note Asset Naming
+
+- `SO_NOTE_001_ShortTitle`
+- `SO_NOTE_010_HospitalResearch`
+
+### Lore Architecture
+
+- Note content must be stored separately from scene objects.
+- Scene pickups reference note data by stable ID.
+- Save data stores collected note IDs.
+- Journal UI reads note data and displays numbered empty or completed slots.
+- Family lore, hospital research, and Yrka documents use the same reusable note system.
+
+## Real-Life Reference and Fictionalization Conventions
+
+### Reference Categories
+
+Real-life material must be classified as one of the following:
+
+- `REAL-SPACE` — architecture, room layout, object placement;
+- `REAL-MEMORY` — remembered event or personal experience;
+- `FAMILY-STORY` — event described by a relative;
+- `FICTIONALIZED` — altered or combined real material;
+- `FICTIONAL` — fully invented narrative content.
+
+### Privacy Rules
+
+- Do not publish an exact residential address.
+- Do not include identifying information about living private individuals without permission.
+- Real names may be replaced with fictional names.
+- Personal photographs must be reviewed before inclusion in a public build.
+- Private source photographs and public game assets must be stored separately.
+- Sensitive reference material must not be committed to a public repository unless intentionally approved.
+
+### Repository Rules
+
+Private family references must not be placed in public asset folders by default.
+
+Recommended local-only structure:
+
+`Reference_Private/Family/`
+
+If stored inside the repository, the folder must first be reviewed and explicitly covered by `.gitignore`.
+
+Publicly usable recreated assets belong under:
+
+`Assets/_Project/Art/References/PublicSafe/`
+
+### Adaptation Rule
+
+Gameplay and narrative clarity take priority over literal reconstruction.
+
+Real events may be changed when necessary for:
+
+- privacy;
+- pacing;
+- player comprehension;
+- thematic consistency;
+- emotional safety;
+- technical feasibility.
+
+### Public Description
+
+Use:
+
+`Inspired by real events, family memories, personal experiences, and a real apartment.`
+
+Do not describe OKOLITSA as a fully factual reconstruction.

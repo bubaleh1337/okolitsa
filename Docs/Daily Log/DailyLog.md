@@ -1,5 +1,45 @@
 # OKOLITSA Daily Log
 
+## 2026-07-24 — Real-Event Narrative Foundation Locked
+
+Confirmed that a significant part of OKOLITSA is inspired by real events, family memories, personal experiences, and a real apartment.
+
+### Real-Life Foundation
+- The apartment layout and its atmosphere are based on a real family apartment.
+- The apartment was the home and place of death of the author's great-grandmother.
+- Alexandra's illness, death, and several surrounding family memories are based on real events.
+- Sleep paralysis, auditory hallucinations, and fear responses are partially based on personal experiences and stories shared by family members.
+- Soviet domestic objects and family belongings are intended to preserve the emotional truth of the real place.
+
+### Fictionalization
+- Andrey, Yrka, the endless night, the hospital research, and the supernatural journey are fictional or heavily fictionalized.
+- Real experiences may be combined, reordered, altered, or assigned to fictional characters.
+- The game will not present itself as a literal documentary reconstruction.
+
+### Production Impact
+- Environmental storytelling must prioritize emotional and domestic authenticity.
+- The apartment must feel inhabited, specific, and personal rather than generically Soviet.
+- Real-life reference material will inform proportions, object placement, photographs, sound, and narrative details.
+- Public-facing materials should describe the project as inspired by real events and family memories.
+
+## 2026-07-24 — Core Narrative Canon Expanded
+
+Locked several major story and system decisions for OKOLITSA.
+
+### Canon
+- The entire game takes place during one endless night.
+- Andrey dies from an accidental overdose during the opening but does not know it.
+- The truth about his death is revealed only in the ending.
+- The apartment will serve as an interactive archive of Soviet domestic life and family memory.
+- Lore will be discovered through photographs, albums, diaries, documents, and numbered notes.
+- Hospital records will reveal research connected to the creation of Yrka as both a physical and supernatural entity.
+
+### Architecture Impact
+- No traditional day/night cycle is required.
+- Narrative progression will use night phases and world-state changes.
+- Lore notes will use permanent IDs and a data-driven journal system.
+- Save data must track collected note IDs.
+
 ## 2026-07-24 — E02-T2 First Night Development Scene
 
 Created an isolated Unity scene for the authored First Night production work.

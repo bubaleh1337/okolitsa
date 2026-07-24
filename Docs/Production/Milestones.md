@@ -56,6 +56,9 @@ Create a clean, modular production foundation for implementing the authored Firs
 - create reusable player-control modes;
 - validate one short in-engine Timeline sequence;
 - prove that Timeline can safely transition between NoControl, LookOnly, and FullControl.
+- establish a privacy-safe real-life reference workflow;
+- identify which apartment and family details are real, fictionalized, or fully fictional;
+- use real spatial references when creating the living-room blockout;
 
 ### Definition of Done
 - the v0.1.1 prototype remains intact and playable;
@@ -65,6 +68,9 @@ Create a clean, modular production foundation for implementing the authored Firs
 - one wake-up Timeline prototype works;
 - control returns to the player without camera or interaction errors;
 - project documentation reflects the new architecture.
+- private family reference material is separated from public game assets;
+- the apartment blockout reflects the real spatial memory without exposing private identifying information;
+- the first wake-up composition uses authored real-life spatial references rather than a generic room layout;
 
 ### Out of Scope
 - final furniture models;
