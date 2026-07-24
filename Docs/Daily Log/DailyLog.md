@@ -1,5 +1,31 @@
 # OKOLITSA Daily Log
 
+## 2026-07-24 — E02-T3B Bedside Table Blockout
+
+Created a reusable bedside table blockout prefab for the First Night apartment.
+
+### Added
+- `PF_BedsideTable_Blockout`
+- `MAT_Blockout_FurnitureWood`
+- Body, top, drawer front, and handle blockout geometry
+- Single root-level collision volume
+- `Socket_TopSurface` attachment point
+- Left and right bedside table instances beside the sofa-bed
+
+### Production Purpose
+- Establish the furniture composition surrounding Andrey's sleeping position.
+- Reserve future locations for cigarettes, lighter, medicine, bottles, and personal objects.
+- Keep the furniture replaceable without changing future prop placement logic.
+
+### Test
+- Both table instances inherit changes from the prefab.
+- Player collision works.
+- Apartment paths remain accessible.
+- No new Console errors are present.
+
+### Next
+Create the CRT television and TV stand blockout prefabs.
+
 ## 2026-07-24 — E02-T3A Sofa-Bed Blockout
 
 Created the first replaceable furniture prefab for the First Night living-room production blockout.

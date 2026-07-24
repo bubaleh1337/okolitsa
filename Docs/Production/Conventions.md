@@ -199,3 +199,20 @@ Use:
 `Inspired by real events, family memories, personal experiences, and a real apartment.`
 
 Do not describe OKOLITSA as a fully factual reconstruction.
+
+## Prefab Socket Conventions
+
+Reusable prefabs may contain named empty child transforms used as attachment points.
+
+### Naming
+
+- `Socket_TopSurface`
+- `Socket_Hand`
+- `Socket_DoorHandle`
+
+### Rules
+
+- Socket objects must have a clear technical placement purpose.
+- Sockets do not contain narrative sequence logic.
+- Replaceable props may be attached to sockets without modifying the base prefab structure.
+- Socket transforms must use a scale of `1 / 1 / 1`.
