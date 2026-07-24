@@ -279,3 +279,20 @@ Narrative sequences use one reusable player-control state controller.
 - Control state belongs to the Player, not to an individual episode controller.
 - Returning to gameplay must explicitly restore `FullControl`.
 - Debug hotkeys must be disabled before a public production build.
+
+## Timeline Control Handoff Conventions
+
+### Generic Control Signals
+
+- `SIG_EnterNoControlCutscene`
+- `SIG_EnterLookOnly`
+- `SIG_EnterFullControl`
+
+### Rules
+
+- Camera activation must happen before the previously active camera is disabled.
+- Every sequence that blocks player control must explicitly restore either `LookOnly` or `FullControl`.
+- Generic control signals may be reused by multiple Timeline assets.
+- Signal Receiver reactions remain scene-specific bindings.
+- Timeline must call `PlayerControlStateController` instead of directly changing movement, interaction, or flashlight components.
+- Public builds must not depend on debug control hotkeys.

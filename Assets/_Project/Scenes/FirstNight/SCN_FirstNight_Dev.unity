@@ -6756,8 +6756,10 @@ GameObject:
   - component: {fileID: 254070532}
   - component: {fileID: 254070535}
   - component: {fileID: 254070533}
+  - component: {fileID: 254070536}
+  - component: {fileID: 254070537}
   m_Layer: 0
-  m_Name: CAM_FN01_WakeUp_Test
+  m_Name: CAM_FN01_WakeUp_Cutscene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6777,7 +6779,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2073419692}
-  m_LocalEulerAnglesHint: {x: 0.003, y: -54.888, z: -0.081}
+  m_LocalEulerAnglesHint: {x: 359.2588, y: 0.0000261975, z: 0.00001668499}
 --- !u!114 &254070533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6873,6 +6875,35 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!81 &254070536
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254070531}
+  m_Enabled: 1
+--- !u!95 &254070537
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254070531}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &271228777
 GameObject:
   m_ObjectHideFlags: 0
@@ -10145,7 +10176,7 @@ MonoBehaviour:
   fpsController: {fileID: 332395280}
   playerInteraction: {fileID: 332395283}
   flashlightToggle: {fileID: 1129625041}
-  startingMode: 2
+  startingMode: 0
   enableDebugHotkeys: 1
   noControlKey: 287
   lookOnlyKey: 288
@@ -77522,6 +77553,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2073419692}
+  - component: {fileID: 2073419694}
+  - component: {fileID: 2073419693}
   m_Layer: 0
   m_Name: FN01_WakeUp
   m_TagString: Untagged
@@ -77545,6 +77578,139 @@ Transform:
   - {fileID: 254070532}
   m_Father: {fileID: 1819863779}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2073419693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073419691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 185ef09003adcef4ebf2d3ebb55f287b, type: 2}
+    - {fileID: 11400000, guid: 6f167f08d4df2664888982e1d97833c1, type: 2}
+    - {fileID: 11400000, guid: 504106a2d69828c41a4f5f1372ac3b71, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 254070531}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 2044522054}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 332395287}
+          m_TargetAssemblyTypeName: Okolitsa.Player.PlayerControlStateController,
+            Assembly-CSharp
+          m_MethodName: SetNoControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2044522054}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 254070531}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 332395287}
+          m_TargetAssemblyTypeName: Okolitsa.Player.PlayerControlStateController,
+            Assembly-CSharp
+          m_MethodName: SetLookOnly
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 332395287}
+          m_TargetAssemblyTypeName: Okolitsa.Player.PlayerControlStateController,
+            Assembly-CSharp
+          m_MethodName: SetFullControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!320 &2073419694
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073419691}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: e328edd87c3ba0546a351b880f85901d, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -7677354981695508500, guid: e328edd87c3ba0546a351b880f85901d, type: 2}
+    value: {fileID: 2073419693}
+  - key: {fileID: 2341769376171783933, guid: e328edd87c3ba0546a351b880f85901d, type: 2}
+    value: {fileID: 254070537}
+  m_ExposedReferences:
+    m_References:
+    - 39101eb076398c0418bd2b71bb0267e2: {fileID: 2073419691}
 --- !u!43 &2073697790
 Mesh:
   m_ObjectHideFlags: 0
