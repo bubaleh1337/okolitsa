@@ -1,10 +1,11 @@
 # OKOLITSA Daily Log
 
-## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout
+## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants
 
 - Created a reusable bedside table blockout prefab for the First Night apartment.
 - Created modular blockout prefabs for the living-room CRT television area.
 - Created a modular sideboard blockout prefab for the First Night apartment.
+- Created modular wall-frame prefabs for the First Night apartment.
 
 
 ### Added
@@ -31,6 +32,12 @@
 - `Socket_DisplayShelf_02`
 - `Socket_DisplayShelf_03`
 - Single root-level collision volume
+- `PF_WallFrame_Blockout_Base`
+- `PF_GrandmotherPhotoFrame_Blockout`
+- `PF_StrangePaintingFrame_Blockout`
+- `MAT_Blockout_PhotoPlaceholder`
+- `MAT_Blockout_PaintingPlaceholder`
+- Separate replaceable `ContentSurface` objects
 
 ### Production Purpose
 - Establish the furniture composition surrounding Andrey's sleeping position.
@@ -44,6 +51,10 @@
 - Reserve modular locations for Soviet service dishes, lace shelf liners, and family belongings.
 - Preserve closed lower storage for future collectible model cars and hidden narrative objects.
 - Establish wall composition for the grandmother photograph and strange painting.
+- Establish the grandmother photograph and strange painting required by the opening composition.
+- Keep frame structure reusable through prefab variants.
+- Allow future real photographs and final painted artwork to replace placeholder materials without changing scene placement.
+- Preserve the relationship between the sofa-bed, sideboard, wall imagery, and apartment arch.
 
 
 ### Test
@@ -61,9 +72,15 @@
 - Glass doors remain visibly transparent.
 - Prefab connection remains intact.
 - No new Console errors are present.
+- Both props remain connected to the shared base prefab.
+- Variant root scales remain `1 / 1 / 1`.
+- Frames do not intersect or flicker against the wall.
+- Both narrative images are visible from the sofa-bed area.
+- No new Console errors are present.
+
 
 ### Next
-Create the grandmother photograph and strange painting blockout props.
+Create the living-room rug blockout and perform the first complete spatial composition review.
 
 ## 2026-07-24 — E02-T3A Sofa-Bed Blockout
 

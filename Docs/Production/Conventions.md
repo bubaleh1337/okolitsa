@@ -216,3 +216,21 @@ Reusable prefabs may contain named empty child transforms used as attachment poi
 - Sockets do not contain narrative sequence logic.
 - Replaceable props may be attached to sockets without modifying the base prefab structure.
 - Socket transforms must use a scale of `1 / 1 / 1`.
+
+## Prefab Variant Conventions
+
+Prefab variants are used when multiple props share the same structural foundation but require different dimensions, materials, or content.
+
+### Naming
+
+- Shared base: `PF_WallFrame_Blockout_Base`
+- Variant: `PF_GrandmotherPhotoFrame_Blockout`
+- Variant: `PF_StrangePaintingFrame_Blockout`
+
+### Rules
+
+- Base prefabs contain shared structure.
+- Variants contain content-specific overrides.
+- Variant root scale should remain `1 / 1 / 1`.
+- Replaceable visual content must remain on a separate object such as `ContentSurface`.
+- Do not modify the base prefab when a change applies only to one narrative prop.
