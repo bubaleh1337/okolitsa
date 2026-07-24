@@ -1,5 +1,28 @@
 # OKOLITSA Daily Log
 
+## 2026-07-24 — E02-T3A Sofa-Bed Blockout
+
+Created the first replaceable furniture prefab for the First Night living-room production blockout.
+
+### Added
+- `__PROPS/Apartment/LivingRoom` hierarchy structure
+- `PF_SofaBed_Blockout`
+- `MAT_Blockout_Sofa`
+- Single root-level collision volume
+
+### Production Purpose
+- Establish the physical location of Andrey's opening wake-up sequence.
+- Define the initial camera relationship between the sofa-bed, painting, apartment arch, and blind hallway corner.
+- Keep the blockout replaceable by a future final sofa model.
+
+### Test
+- Player cannot pass through the sofa-bed.
+- Apartment and balcony paths remain accessible.
+- Scene contains no new Console errors.
+
+### Next
+Create the bedside table blockout and validate the opening composition from the sofa-bed.
+
 ## 2026-07-24 — Real-Event Narrative Foundation Locked
 
 Confirmed that a significant part of OKOLITSA is inspired by real events, family memories, personal experiences, and a real apartment.
