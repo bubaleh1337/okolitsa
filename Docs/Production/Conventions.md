@@ -296,3 +296,17 @@ Narrative sequences use one reusable player-control state controller.
 - Signal Receiver reactions remain scene-specific bindings.
 - Timeline must call `PlayerControlStateController` instead of directly changing movement, interaction, or flashlight components.
 - Public builds must not depend on debug control hotkeys.
+
+## Narrative Visual Placeholder Conventions
+
+Narrative visual placeholders represent authored story content without becoming gameplay systems.
+
+### Rules
+
+- Narrative placeholders live under `__NARRATIVE`.
+- Reusable placeholder prefabs live under `Prefabs/Narrative`.
+- Placeholder figures do not use gameplay AI.
+- Placeholder figures do not require physical colliders unless a later gameplay ticket explicitly needs them.
+- Visibility and authored movement are controlled through Timeline.
+- Final creature identity must not be inferred from temporary primitive geometry.
+- Temporary visual placeholders must remain independently replaceable.

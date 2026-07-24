@@ -1,6 +1,6 @@
 # OKOLITSA Daily Log
 
-## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants — E02-T3F Living Room Rug Blockout and Composition Review — E02-T4A Wake-Up Composition Test — E02-T4B Reusable Player Control Modes — E02-T4C Wake-Up Timeline Control Handoff
+## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants — E02-T3F Living Room Rug Blockout and Composition Review — E02-T4A Wake-Up Composition Test — E02-T4B Reusable Player Control Modes — E02-T4C Wake-Up Timeline Control Handoff — E02-T4D Sleep-Paralysis Figure and Close Audio
 
 - Created a reusable bedside table blockout prefab for the First Night apartment.
 - Created modular blockout prefabs for the living-room CRT television area.
@@ -10,6 +10,7 @@
 - Created a temporary scene camera to validate the authored wake-up composition before implementing Timeline.
 - Created a reusable player-control state system for gameplay and future Timeline sequences.
 - Created the first Timeline-driven control handoff for the First Night opening.
+- Added the first authored horror-content placeholder to the First Night wake-up Timeline.
 
 
 ### Added
@@ -59,12 +60,23 @@
 - `SIG_EnterFullControl`
 - Signal Track and Signal Receiver reactions
 - First recorded wake-up camera rotation
+- `PF_SleepParalysisFigure_Blockout`
+- `MAT_Blockout_SleepParalysisFigure`
+- Timeline-controlled figure activation
+- Timeline-controlled unnatural approach movement
+- `AUD_FN01_CloseCrunch`
+- Close spatial audio accent near the cutscene camera
 
 ### Sequence Flow
 - The scene starts in `NoControl`.
 - A dedicated cutscene camera presents the initial wake-up shot.
 - Control transitions to `LookOnly` on the player camera.
 - The sequence explicitly restores `FullControl`.
+- The room initially appears empty.
+- A black elongated figure gradually becomes visible.
+- The figure approaches without a normal walking cycle.
+- A close dry crunch is heard near Andrey's ear.
+- The figure disappears during the camera handoff into `LookOnly`.
 
 ### Changed
 - `SimpleFPSController` now supports independent movement and camera-look permissions.
@@ -92,6 +104,11 @@
 - Keep player-control logic inside the reusable Player system.
 - Establish reusable generic control signals.
 - Prove safe camera handoff between cutscene and gameplay.
+- Keep the sleep-paralysis figure separate from gameplay AI.
+- Validate Timeline-driven narrative presence and disappearance.
+- Keep placeholder geometry independently replaceable by final artwork.
+- Test close spatial audio as part of the project's perception-based horror direction.
+
 
 ### Production Purpose
 - Establish the furniture composition surrounding Andrey's sleeping position.
@@ -161,9 +178,15 @@
 - FullControl restores movement, interaction, and flashlight input.
 - No duplicate Audio Listener warning appears.
 - No new Console errors are present.
+- Figure activation and disappearance follow the Timeline.
+- Figure movement does not require gameplay code.
+- Close audio is spatialized and does not loop.
+- Player control handoff still works.
+- No duplicate Audio Listener warning appears.
+- No new Console errors are present.
 
 ### Next
-Connect the reusable control modes to a first Timeline prototype for the wake-up sequence.
+Add a simple blink and visual-obstruction layer to support blurred opening eyes and the transition into real awakening.
 
 ## 2026-07-24 — E02-T3A Sofa-Bed Blockout
 
