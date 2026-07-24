@@ -1,6 +1,6 @@
 # OKOLITSA Daily Log
 
-## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants — E02-T3F Living Room Rug Blockout and Composition Review — E02-T4A Wake-Up Composition Test
+## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants — E02-T3F Living Room Rug Blockout and Composition Review — E02-T4A Wake-Up Composition Test — E02-T4B Reusable Player Control Modes
 
 - Created a reusable bedside table blockout prefab for the First Night apartment.
 - Created modular blockout prefabs for the living-room CRT television area.
@@ -8,6 +8,7 @@
 - Created modular wall-frame prefabs for the First Night apartment.
 - Created the blockout rug for the First Night living room and used it to perform the first composition review of the apartment’s main inhabited space.
 - Created a temporary scene camera to validate the authored wake-up composition before implementing Timeline.
+- Created a reusable player-control state system for gameplay and future Timeline sequences.
 
 
 ### Added
@@ -45,6 +46,17 @@
 - `Rug_LivingRoom` placement in the living room
 - `FN01_WakeUp` narrative hierarchy group
 - `CAM_FN01_WakeUp_Test`
+- `PlayerControlMode`
+- `PlayerControlStateController`
+- `NoControl`
+- `LookOnly`
+- `FullControl`
+- Temporary F6, F7, and F8 development hotkeys
+
+### Changed
+- `SimpleFPSController` now supports independent movement and camera-look permissions.
+- `PlayerInteraction` now supports explicit interaction blocking and immediate prompt cleanup.
+- `FlashlightToggle` now supports explicit input permission and externally controlled flashlight state.
 
 ### Validation Focus
 - Physical position of Andrey's head on the sofa-bed
@@ -57,6 +69,12 @@
 - The test camera is not the final cutscene implementation.
 - The camera remains disabled outside composition testing.
 - The real apartment furniture arrangement is preserved rather than rearranged only for cinematic convenience.
+
+### Architecture Purpose
+- Keep narrative sequences independent from low-level player components.
+- Allow Timeline signals to switch control modes through reusable public methods.
+- Prevent individual cutscenes from manually disabling unrelated systems.
+- Preserve future expansion without creating one monolithic First Night controller.
 
 ### Production Purpose
 - Establish the furniture composition surrounding Andrey's sleeping position.
@@ -114,9 +132,15 @@
 - The Player is active after testing.
 - The test camera is disabled after testing.
 - No new Console errors are present.
+- FullControl restores normal gameplay.
+- LookOnly allows mouse look but blocks movement, interaction, and flashlight input.
+- NoControl blocks all player input.
+- Interaction prompt is hidden when interaction is disabled.
+- Returning to FullControl restores all tested functionality.
+- No new Console errors are present.
 
 ### Next
-Create reusable player control modes for NoControl, LookOnly and FullControl.
+Connect the reusable control modes to a first Timeline prototype for the wake-up sequence.
 
 ## 2026-07-24 — E02-T3A Sofa-Bed Blockout
 

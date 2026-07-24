@@ -6771,13 +6771,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254070531}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00033543466, y: -0.47851455, z: -0.0006222265, w: 0.8780794}
+  m_LocalRotation: {x: 0.00034779776, y: -0.4608779, z: -0.0006154015, w: 0.88746333}
   m_LocalPosition: {x: 106.344, y: 17.163, z: 163.895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2073419692}
-  m_LocalEulerAnglesHint: {x: 0, y: -57.177, z: -0.081}
+  m_LocalEulerAnglesHint: {x: 0.003, y: -54.888, z: -0.081}
 --- !u!114 &254070533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9849,6 +9849,7 @@ GameObject:
   - component: {fileID: 332395284}
   - component: {fileID: 332395285}
   - component: {fileID: 332395286}
+  - component: {fileID: 332395287}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9928,9 +9929,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3.5
   sprintSpeed: 6
-  mouseSensitivity: 120
   jumpHeight: 1.2
   gravity: -9.81
+  mouseSensitivity: 120
+  minimumPitch: -85
+  maximumPitch: 85
+  movementEnabled: 1
+  lookEnabled: 1
 --- !u!143 &332395281
 CharacterController:
   m_ObjectHideFlags: 0
@@ -9975,6 +9980,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   interactKey: 101
+  interactionEnabled: 1
   interactionPromptController: {fileID: 597550345}
 --- !u!82 &332395284
 AudioSource:
@@ -10124,6 +10130,28 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 53cb7d7b112b8ca4d8e5fb5f46f40f4a, type: 3}
   jumpClip: {fileID: 8300000, guid: a0bc986fc8720b145a870da74be45082, type: 3}
   landClip: {fileID: 8300000, guid: 3caec309824eff34da72c22597edb255, type: 3}
+--- !u!114 &332395287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332395275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467d125f67131384d9510d3ad3f0abe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fpsController: {fileID: 332395280}
+  playerInteraction: {fileID: 332395283}
+  flashlightToggle: {fileID: 1129625041}
+  startingMode: 2
+  enableDebugHotkeys: 1
+  noControlKey: 287
+  lookOnlyKey: 288
+  fullControlKey: 289
+  logStateChanges: 1
+  currentMode: 0
 --- !u!1 &338081926
 GameObject:
   m_ObjectHideFlags: 0
@@ -42568,8 +42596,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlightLight: {fileID: 1129625040}
-  toggleKey: 102
   startEnabled: 0
+  toggleKey: 102
+  inputEnabled: 1
   audioSource: {fileID: 1129625042}
   turnOnClip: {fileID: 8300000, guid: c75daaf5c19b102459ae245d7b68b85f, type: 3}
   turnOffClip: {fileID: 8300000, guid: c75daaf5c19b102459ae245d7b68b85f, type: 3}

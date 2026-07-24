@@ -247,3 +247,35 @@ Examples:
 - Rug
 
 These objects are used to define room function, player orientation, and composition before smaller decorative props are added.
+
+## Player Control Mode Conventions
+
+Narrative sequences use one reusable player-control state controller.
+
+### Supported Modes
+
+- `NoControl`
+  - movement disabled;
+  - camera look disabled;
+  - interaction disabled;
+  - flashlight input disabled.
+
+- `LookOnly`
+  - movement disabled;
+  - camera look enabled;
+  - interaction disabled;
+  - flashlight input disabled.
+
+- `FullControl`
+  - movement enabled;
+  - camera look enabled;
+  - interaction enabled;
+  - flashlight input enabled.
+
+### Rules
+
+- Individual cutscenes must not enable or disable unrelated player components independently.
+- Timeline signals and UnityEvents must call the parameterless control-mode methods.
+- Control state belongs to the Player, not to an individual episode controller.
+- Returning to gameplay must explicitly restore `FullControl`.
+- Debug hotkeys must be disabled before a public production build.
