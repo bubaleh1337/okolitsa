@@ -1,12 +1,13 @@
 # OKOLITSA Daily Log
 
-## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants — E02-T3F Living Room Rug Blockout and Composition Review
+## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants — E02-T3F Living Room Rug Blockout and Composition Review — E02-T4A Wake-Up Composition Test
 
 - Created a reusable bedside table blockout prefab for the First Night apartment.
 - Created modular blockout prefabs for the living-room CRT television area.
 - Created a modular sideboard blockout prefab for the First Night apartment.
 - Created modular wall-frame prefabs for the First Night apartment.
 - Created the blockout rug for the First Night living room and used it to perform the first composition review of the apartment’s main inhabited space.
+- Created a temporary scene camera to validate the authored wake-up composition before implementing Timeline.
 
 
 ### Added
@@ -42,7 +43,20 @@
 - `MAT_Blockout_Rug`
 - `PF_Rug_Blockout`
 - `Rug_LivingRoom` placement in the living room
+- `FN01_WakeUp` narrative hierarchy group
+- `CAM_FN01_WakeUp_Test`
 
+### Validation Focus
+- Physical position of Andrey's head on the sofa-bed
+- Initial ceiling view
+- Visibility of the strange painting and grandmother photograph
+- Partial visibility of the apartment arch
+- Preservation of the blind hallway corner
+
+### Rules
+- The test camera is not the final cutscene implementation.
+- The camera remains disabled outside composition testing.
+- The real apartment furniture arrangement is preserved rather than rearranged only for cinematic convenience.
 
 ### Production Purpose
 - Establish the furniture composition surrounding Andrey's sleeping position.
@@ -95,11 +109,14 @@
 - Living room reads more clearly as a coherent space.
 - Main furniture composition remains readable from gameplay viewpoints.
 - No new Console errors are present.
-
-
+- One camera position supports the opening ceiling view and later head movement.
+- The hallway remains partially concealed.
+- The Player is active after testing.
+- The test camera is disabled after testing.
+- No new Console errors are present.
 
 ### Next
-Add a small living-room coffee table blockout and continue strengthening the functional center of the room.
+Create reusable player control modes for NoControl, LookOnly and FullControl.
 
 ## 2026-07-24 — E02-T3A Sofa-Bed Blockout
 
