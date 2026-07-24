@@ -1,5 +1,32 @@
 # OKOLITSA Daily Log
 
+## 2026-07-24 — First Night Sequence Map Locked
+
+Completed the narrative segmentation of the current OKOLITSA story draft.
+
+### Completed
+- Published the v0.1.1 Atmosphere Systems Update on itch.io.
+- Prepared "Околица. Виденье моей игры_v2_sequence-map.docx".
+- Divided the First Night story into:
+  - lore and backstory;
+  - non-interactive cutscenes;
+  - limited-control sequences;
+  - full-control gameplay;
+  - narrative transitions.
+
+### Production Decisions
+- The old light-failure and candle sequence remains a reusable technical prototype.
+- The next playable version will follow the authored First Night story.
+- Substance-use content will be presented through a non-interactive cinematic transition rather than a detailed gameplay mechanic.
+- Cutscenes will be created primarily as in-engine Timeline sequences.
+- Gameplay systems must remain modular and reusable.
+
+### Active Milestone
+Milestone 1.5 — First Night Production Foundation
+
+### Next
+Create an isolated First Night development scene without modifying the stable v0.1.1 prototype scene.
+
 ## 2026-07-18 — E02-T1 First Night Narrative Breakdown
 
 Created the first narrative breakdown based on the new 20-page OKOLITSA vision draft.
