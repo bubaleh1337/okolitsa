@@ -234,3 +234,16 @@ Prefab variants are used when multiple props share the same structural foundatio
 - Variant root scale should remain `1 / 1 / 1`.
 - Replaceable visual content must remain on a separate object such as `ContentSurface`.
 - Do not modify the base prefab when a change applies only to one narrative prop.
+
+## Blockout Set Dressing Rule
+
+Large set-dressing props must first establish spatial readability before detail density.
+
+Examples:
+- Sofa
+- TV stand
+- Sideboard
+- Wall frames
+- Rug
+
+These objects are used to define room function, player orientation, and composition before smaller decorative props are added.

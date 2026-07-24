@@ -1,11 +1,12 @@
 # OKOLITSA Daily Log
 
-## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants
+## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants — E02-T3F Living Room Rug Blockout and Composition Review
 
 - Created a reusable bedside table blockout prefab for the First Night apartment.
 - Created modular blockout prefabs for the living-room CRT television area.
 - Created a modular sideboard blockout prefab for the First Night apartment.
 - Created modular wall-frame prefabs for the First Night apartment.
+- Created the blockout rug for the First Night living room and used it to perform the first composition review of the apartment’s main inhabited space.
 
 
 ### Added
@@ -38,6 +39,10 @@
 - `MAT_Blockout_PhotoPlaceholder`
 - `MAT_Blockout_PaintingPlaceholder`
 - Separate replaceable `ContentSurface` objects
+- `MAT_Blockout_Rug`
+- `PF_Rug_Blockout`
+- `Rug_LivingRoom` placement in the living room
+
 
 ### Production Purpose
 - Establish the furniture composition surrounding Andrey's sleeping position.
@@ -55,7 +60,15 @@
 - Keep frame structure reusable through prefab variants.
 - Allow future real photographs and final painted artwork to replace placeholder materials without changing scene placement.
 - Preserve the relationship between the sofa-bed, sideboard, wall imagery, and apartment arch.
+- Visually anchor the sofa and TV area into a single living zone.
+- Improve spatial readability from player viewpoints.
+- Support future placement of smaller props and narrative set dressing.
+- Bring the apartment closer to a believable lived-in Soviet interior.
 
+### Review Focus
+- Entrance view into the living room
+- Wake-up / sofa-area readability
+- Reverse view from the TV zone back into the room
 
 ### Test
 - Both table instances inherit changes from the prefab.
@@ -77,10 +90,16 @@
 - Frames do not intersect or flicker against the wall.
 - Both narrative images are visible from the sofa-bed area.
 - No new Console errors are present.
+- Rug does not intersect the floor visibly.
+- Rug does not block player navigation.
+- Living room reads more clearly as a coherent space.
+- Main furniture composition remains readable from gameplay viewpoints.
+- No new Console errors are present.
+
 
 
 ### Next
-Create the living-room rug blockout and perform the first complete spatial composition review.
+Add a small living-room coffee table blockout and continue strengthening the functional center of the room.
 
 ## 2026-07-24 — E02-T3A Sofa-Bed Blockout
 
