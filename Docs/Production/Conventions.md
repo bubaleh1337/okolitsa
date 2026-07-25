@@ -396,3 +396,80 @@ Temporary perception states may further restrict camera input while the Player r
 - Downward limit: `35°`
 
 These values are authored tuning defaults, not universal settings for every narrative sequence.
+
+## Apartment Electrical System Conventions
+
+Apartment lighting uses two separate state layers.
+
+### Apartment Power
+
+`ApartmentPowerSupply` represents whether electrical power reaches the complete apartment.
+
+It may later be controlled by:
+
+- the building electrical breaker;
+- a narrative power-failure event;
+- a Timeline signal;
+- another explicit gameplay system.
+
+Apartment power must not directly change the logical positions of room switches.
+
+### Room Circuits
+
+Each illuminated room owns one `RoomLightCircuit`.
+
+Current circuits:
+
+- `LGT_LivingRoom_Circuit`
+- `LGT_EntryHall_Circuit`
+- `LGT_Bathroom_Circuit`
+- `LGT_Kitchen_Circuit`
+
+Each circuit stores:
+
+- the requested wall-switch state;
+- the actual powered-light state;
+- assigned Unity `Light` components;
+- assigned visible bulb renderers;
+- powered and unpowered bulb materials.
+
+### Final Light Rule
+
+A room produces light only when:
+
+- its wall switch requests light;
+- apartment power is available.
+
+### Ownership Rules
+
+- One `Light` component belongs to only one room circuit.
+- One visible bulb renderer belongs to only one room circuit.
+- Wall switches communicate with their assigned room circuit.
+- Wall switches must not directly control apartment-wide power.
+- Apartment-wide events must communicate with `ApartmentPowerSupply`.
+- Legacy systems must not control the same lights in parallel.
+
+### Spatial Rule
+
+The connecting apartment corridor intentionally has:
+
+- no ceiling lamp;
+- no room-light circuit;
+- no wall switch.
+
+Its visibility comes from neighbouring rooms and external night light. This is a canonical property of the real apartment layout, not missing content.
+
+## Development Skip Conventions
+
+Long development sequences may provide a temporary skip input while they remain under active iteration.
+
+### Rules
+
+- A skip must restore a valid gameplay state rather than only stopping Timeline playback.
+- Temporary narrative objects must be removed.
+- Sequence audio must be stopped.
+- Exactly one camera and one Audio Listener must remain active.
+- Temporary perception restrictions must end.
+- Player control must return explicitly.
+- The skip input must stop working after the sequence has ended.
+- Development skip behaviour must be reviewed before a public build.

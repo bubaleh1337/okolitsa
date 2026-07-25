@@ -1,9 +1,10 @@
 # OKOLITSA Daily Log
 
-## 2026-07-25 — E02-T4E Master Bed Opening Timeline — E02-T4F Constrained Look and Kitchen Impact
+## 2026-07-25 — E02-T4E Master Bed Opening Timeline — E02-T4F Constrained Look and Kitchen Impact — E02-T5A Apartment Lighting Foundation and Opening Skip
 
 - Rebuilt the First Night bed-opening sequence around one master Timeline after validating that independently orchestrated Timeline assets caused conflicting camera, activation, and control states.
 - Added a temporary perception-control phase after Andrey's real awakening.
+- Created the reusable apartment-lighting foundation and added a development-friendly skip for the complete bed-opening sequence.
 
 
 ### Added
@@ -25,6 +26,19 @@
 - `SIG_PlayKitchenPotFall`
 - Kitchen pot-fall audio event
 - Ten-second limited-look phase before normal gameplay control
+- `ApartmentPowerSupply`
+- `RoomLightCircuit`
+- `RoomLightSwitchInteractable`
+- `BedOpeningSkipController`
+- Independent light circuits for:
+  - living room;
+  - entry hall;
+  - bathroom;
+  - kitchen.
+- Interactive wall switches using the existing `IInteractable` system
+- Visible bulb-material synchronization
+- Apartment-wide power testing through the temporary `L` hotkey
+- Opening-sequence skip through `Space`
 
 ### Architecture Changes
 
@@ -59,6 +73,42 @@
 - Upward: approximately `45°`
 - Downward: approximately `35°`
 - Diagonal look: supported within the elliptical boundary
+
+### Apartment Lighting Structure
+
+- `PWR_Apartment` represents whether electrical power reaches the apartment.
+- Each illuminated room has an independent `RoomLightCircuit`.
+- Each wall switch changes only its assigned room's requested switch state.
+- Actual light output requires both:
+  - the room switch to be on;
+  - apartment power to be available.
+- The connecting corridor intentionally has no lamp or wall switch, matching the real apartment layout.
+
+
+### Power-State Behaviour
+
+- Turning a room switch off keeps that room dark even when apartment power is available.
+- Cutting apartment power turns off every room.
+- Room-switch positions remain stored while power is unavailable.
+- Restoring apartment power turns on only rooms whose switches were previously left on.
+- `Debug/Toggle Wall Switch` simulates a room's wall switch.
+- The temporary `L` hotkey simulates the future building electrical breaker.
+
+### Visual Behaviour
+
+- Each circuit controls its assigned Unity `Light` components.
+- Each circuit also changes its assigned visible bulb renderers between powered and unpowered materials.
+- The obsolete `ApartmentLightFailureController` is disabled to prevent competing ownership of the same lights.
+
+### Opening Skip
+
+- `Space` skips the complete bed-opening master Timeline while it is playing.
+- The skip stops the master and Sub-Timelines.
+- Temporary sequence audio is stopped.
+- The sleep-paralysis figure is forced inactive.
+- The gameplay camera and Audio Listener are restored safely.
+- Limited look is released.
+- `FullControl` returns on the following frame so the skip key does not immediately trigger a jump.
 
 ### Final Sequence Flow
 
@@ -97,10 +147,20 @@
 - `FullControl` returns after the phase.
 - The camera does not snap when normal look control resumes.
 - No new Console errors are present.
+- `Space` skips the opening sequence and restores gameplay safely.
+- Each room switch works through `E`.
+- Each switch affects only its assigned room.
+- The connecting corridor remains without its own light source.
+- Bulb materials match the actual light state.
+- `L` cuts and restores apartment-wide power.
+- Previously enabled rooms return after power restoration.
+- Rooms switched off remain off after power restoration.
+- No competing light controller changes the room states.
+- No new Console errors are present.
 
 ### Next
 
-Continue the real-awakening sequence with Andrey reacting to the kitchen impact while remaining seated and facing the partially concealed apartment corridor.
+Create the blockout shoehorn and a lightweight narrative pickup interaction for FN-03 without introducing a full inventory system.
 
 ## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants — E02-T3F Living Room Rug Blockout and Composition Review — E02-T4A Wake-Up Composition Test — E02-T4B Reusable Player Control Modes — E02-T4C Wake-Up Timeline Control Handoff — E02-T4D Sleep-Paralysis Figure and Close Audio
 

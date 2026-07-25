@@ -331,3 +331,43 @@ Approximately seven seconds into this phase, a metal pot appears to fall in the 
 The sound redirects attention toward the apartment arch and the concealed corridor beyond it. Because of the apartment's sharp turn, the player cannot confirm what caused the sound while remaining seated. This preserves the authored fear created by the real apartment layout.
 
 After approximately ten seconds, normal gameplay control is restored for the next response to the kitchen disturbance.
+
+## FN-03 — Apartment Lighting Foundation
+
+**Control mode:** `[GAMEPLAY — FULL CONTROL]`
+
+After the kitchen impact, the player begins restoring limited control over the apartment by using the real wall-switch layout.
+
+### Canonical Lighting Layout
+
+The following spaces contain independent ceiling lighting and wall switches:
+
+- living room / bedroom;
+- entry hall;
+- bathroom;
+- kitchen.
+
+The narrow connecting corridor has no ceiling lamp and no wall switch.
+
+This darkness is intentional and based on the real apartment. Even when neighbouring rooms are illuminated, the corridor retains a concealed and unreliable quality around its sharp turn.
+
+### Electrical Hierarchy
+
+Room switches and apartment-wide power are separate systems.
+
+- A room switch stores whether that room requests light.
+- The apartment power supply determines whether electricity is available.
+- A room lights only when both conditions are true.
+- A future electrical breaker in the apartment stairwell may interrupt or restore apartment-wide power without changing room-switch positions.
+
+### Narrative Purpose
+
+Apartment lighting is not only a visibility utility.
+
+It establishes:
+
+- familiar domestic behaviour;
+- player agency after the opening paralysis;
+- uneven safety between adjacent spaces;
+- the connecting corridor as a persistent blind zone;
+- the foundation for later light failures and external visibility risk.
