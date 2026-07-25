@@ -287,3 +287,27 @@ The shared note and journal system will support several content categories:
 - Hospital records
 - Yrka research
 - Witness accounts
+
+## Bed Opening Sequence — Current Implementation Structure
+
+The opening bed sequence is implemented as two authored narrative sections coordinated by one master Timeline.
+
+### FN-01 — Sleep Paralysis
+
+**Control mode:** `[CUTSCENE — NO CONTROL]`
+
+Andrey gradually perceives the elongated black figure, remains unable to move, hears the close dry crunch, and witnesses the figure approach his head.
+
+### FN-02 — Real Awakening
+
+**Control mode:** `[CUTSCENE — NO CONTROL]`
+
+After the figure disappears, Andrey remains in bed, recovers from the experience, sits up, and looks around the real apartment before control is transferred to the gameplay camera.
+
+### Production Structure
+
+- `TL_FN_BedOpening_MASTER`
+  - `TL_FN01_SleepParalysis_Prototype`
+  - `TL_FN02_RealAwakening_Prototype`
+
+The transition between these sections preserves one continuous bed-camera perspective. Gameplay control is restored only after the real-awakening section and the camera handoff are complete.

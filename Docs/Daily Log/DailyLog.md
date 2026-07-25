@@ -1,5 +1,63 @@
 # OKOLITSA Daily Log
 
+## 2026-07-25 — E02-T4E Master Bed Opening Timeline
+
+Rebuilt the First Night bed-opening sequence around one master Timeline after validating that independently orchestrated Timeline assets caused conflicting camera, activation, and control states.
+
+### Added
+
+- `TL_FN_BedOpening_MASTER`
+- `FN_BedOpening_MASTER`
+- Master `Playable Director`
+- Master `Signal Receiver`
+- Master `CameraPoseHandoff`
+- `FN01` sleep-paralysis Sub-Timeline
+- `FN02` real-awakening Sub-Timeline
+- Sequential Control Tracks for both authored sections
+
+### Architecture Changes
+
+- The master Timeline is now the only owner of global sequence timing.
+- `FN01` and `FN02` no longer start themselves through `Play On Awake`.
+- Both Sub-Timelines contain authored animation and audio content without independently controlling the full sequence.
+- Player-control and camera-handoff signals now exist only on the master Timeline.
+- Control Clip activation was disabled so shared scene objects remain active across Sub-Timeline boundaries.
+- The shared bed cutscene camera remains active between sleep paralysis and real awakening.
+- The sleep-paralysis figure uses an Activation Track with `Post-playback State: Inactive`.
+
+### Final Sequence Flow
+
+- `0.00–11.50`: `FN01` sleep paralysis
+- `11.50–24.00`: `FN02` real awakening
+- `24.00–26.50`: camera handoff from the bed cutscene camera to the Player camera
+- `26.50`: `FullControl` restored
+
+### Resolved Problems
+
+- Removed overlapping independent Timeline execution.
+- Removed conflicting camera animation ownership.
+- Prevented `No cameras rendering` during the Sub-Timeline transition.
+- Prevented the scene from temporarily losing its active `Audio Listener`.
+- Ensured the sleep-paralysis figure becomes inactive after `FN01`.
+- Restored player control reliably after the complete bed-opening sequence.
+- Preserved a continuous camera view between sleep paralysis and real awakening.
+
+### Test
+
+- The master Timeline starts automatically.
+- `FN01` and `FN02` execute sequentially rather than concurrently.
+- The cutscene camera remains active across the Sub-Timeline boundary.
+- The sleep-paralysis figure disappears after its authored section.
+- Camera handoff starts and completes successfully.
+- `FullControl` returns at the end of the master sequence.
+- No `No cameras rendering` message appears.
+- No missing or duplicate `Audio Listener` warning appears.
+- No new Console errors are present.
+
+### Next
+
+Add a ten-second constrained `LookOnly` phase after Andrey returns his gaze to the wall. During this phase, the player may look approximately 90 degrees left and right without moving. A metal pot impact will be heard from the kitchen approximately seven seconds into the phase.
+
 ## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants — E02-T3F Living Room Rug Blockout and Composition Review — E02-T4A Wake-Up Composition Test — E02-T4B Reusable Player Control Modes — E02-T4C Wake-Up Timeline Control Handoff — E02-T4D Sleep-Paralysis Figure and Close Audio
 
 - Created a reusable bedside table blockout prefab for the First Night apartment.

@@ -310,3 +310,42 @@ Narrative visual placeholders represent authored story content without becoming 
 - Visibility and authored movement are controlled through Timeline.
 - Final creature identity must not be inferred from temporary primitive geometry.
 - Temporary visual placeholders must remain independently replaceable.
+
+## Master Timeline and Sub-Timeline Conventions
+
+Long authored sequences may be divided into modular Sub-Timelines, but one master Timeline must own global orchestration.
+
+### Master Timeline Responsibilities
+
+The master Timeline controls:
+
+- global sequence timing;
+- Sub-Timeline order;
+- player-control mode changes;
+- camera handoff;
+- gameplay restoration;
+- signals shared across multiple authored sections.
+
+### Sub-Timeline Responsibilities
+
+Sub-Timelines contain local authored content such as:
+
+- camera animation;
+- narrative prop animation;
+- Activation Tracks;
+- local sound effects;
+- visual sequence timing.
+
+### Rules
+
+- Only the master `Playable Director` may use `Play On Awake`.
+- Sub-Timeline directors must use `Play On Awake: Off`.
+- Sub-Timelines must not start one another through signals when a master Timeline exists.
+- Player-control signals must remain on the master Timeline.
+- Camera-handoff signals must remain on the master Timeline.
+- Sub-Timelines that share cameras or scene objects must execute sequentially rather than concurrently.
+- Shared scene objects must remain active across Sub-Timeline boundaries.
+- Disable `Control Activation` on Control Clips when deactivating the controlled object would also disable a shared camera, Audio Listener, or another persistent dependency.
+- Temporary narrative figures must define an explicit Activation Track post-playback state.
+- Temporary figures that must disappear after their section should use `Post-playback State: Inactive`.
+- The master Timeline must explicitly restore `FullControl` before it ends.
