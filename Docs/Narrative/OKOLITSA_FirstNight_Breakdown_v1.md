@@ -418,3 +418,31 @@ First-person held props use a dedicated URP Overlay camera.
 - no interaction logic.
 
 Individual held visuals own their authored local position, rotation, and scale.
+
+## FN-03 — Initial Apartment Darkness
+
+**Control mode:** `[GAMEPLAY — FULL CONTROL]`
+
+When normal gameplay begins, electrical power is available, but every room light has been left switched off.
+
+The player must manually illuminate:
+
+- the living room;
+- the entry hall;
+- the bathroom;
+- the kitchen.
+
+The narrow connecting corridor has no lamp and remains dependent on indirect light from neighbouring spaces.
+
+### Narrative Purpose
+
+The darkness is initially ordinary and believable rather than immediately supernatural.
+
+Andrey is not trapped inside an inexplicable total power failure. Instead, he must perform familiar domestic actions while already frightened:
+
+- approach a wall switch;
+- expose another part of the apartment;
+- decide whether additional light makes the space safer;
+- move through the naturally unlit corridor.
+
+This preserves the real apartment's layout and allows later electrical failures to feel like a meaningful escalation rather than the starting condition.

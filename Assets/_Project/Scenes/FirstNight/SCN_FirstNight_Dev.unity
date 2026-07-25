@@ -13372,7 +13372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0272b0959c208354c959798d44755cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apartmentLightController: {fileID: 992029778}
+  apartmentLightController: {fileID: 0}
   candle: {fileID: 1367188893}
   firstDisturbanceController: {fileID: 1694228809}
   windowImpactController: {fileID: 895417371}
@@ -14916,7 +14916,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42c2f9f8a347bdb45821a4b75c2f74a5, type: 2}
+  - {fileID: 2100000, guid: 4591943d624dde54aadca31b71480029, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -37447,7 +37447,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 992029779}
-  - component: {fileID: 992029778}
   - component: {fileID: 992029780}
   - component: {fileID: 992029781}
   m_Layer: 0
@@ -37457,40 +37456,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &992029778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 992029777}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf0ff2e5bb9c2014e8e06289af19b4a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  apartmentLights:
-  - {fileID: 1112374145}
-  - {fileID: 1408298828}
-  - {fileID: 1575649893}
-  - {fileID: 1703303138}
-  bulbRenderers:
-  - {fileID: 1655455747}
-  - {fileID: 466424859}
-  - {fileID: 2105233624}
-  - {fileID: 2146173181}
-  bulbOnMaterial: {fileID: 2100000, guid: 2821414cf264410459f99a35f6b92158, type: 2}
-  bulbOffMaterial: {fileID: 2100000, guid: 4591943d624dde54aadca31b71480029, type: 2}
-  powerAudioSource: {fileID: 992029780}
-  powerOffClip: {fileID: 8300000, guid: ce6d31ea04cfb0c47a7aeae07dddbf0f, type: 3}
-  powerOnClip: {fileID: 8300000, guid: bbf26f4e9d11c4c4fbbfa61e2abe724d, type: 3}
-  powerAudioVolume: 1
-  flickerAudioSource: {fileID: 992029781}
-  flickerClip: {fileID: 8300000, guid: 18351ba5c02ce3442aa7fa9842a5e90c, type: 3}
-  flickerAudioVolume: 0.7
-  loopFlickerAudio: 1
-  testToggleKey: 108
-  startWithPowerOn: 1
 --- !u!4 &992029779
 Transform:
   m_ObjectHideFlags: 0
@@ -42527,7 +42492,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112374142}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
@@ -55168,7 +55133,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408298825}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
@@ -62478,7 +62443,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575649890}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
@@ -65506,7 +65471,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42c2f9f8a347bdb45821a4b75c2f74a5, type: 2}
+  - {fileID: 2100000, guid: 4591943d624dde54aadca31b71480029, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -66968,7 +66933,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703303135}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
@@ -82004,7 +81969,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42c2f9f8a347bdb45821a4b75c2f74a5, type: 2}
+  - {fileID: 2100000, guid: 4591943d624dde54aadca31b71480029, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83274,7 +83239,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42c2f9f8a347bdb45821a4b75c2f74a5, type: 2}
+  - {fileID: 2100000, guid: 4591943d624dde54aadca31b71480029, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

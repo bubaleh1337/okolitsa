@@ -1,11 +1,12 @@
 # OKOLITSA Daily Log
 
-## 2026-07-25 — E02-T4E Master Bed Opening Timeline — E02-T4F Constrained Look and Kitchen Impact — E02-T5A Apartment Lighting Foundation and Opening Skip — E02-T5B/C Shoehorn Pickup and Held-Prop ViewModel
+## 2026-07-25 — E02-T4E Master Bed Opening Timeline — E02-T4F Constrained Look and Kitchen Impact — E02-T5A Apartment Lighting Foundation and Opening Skip — E02-T5B/C Shoehorn Pickup and Held-Prop ViewModel — E02-T6A Dark Apartment Startup State
 
 - Rebuilt the First Night bed-opening sequence around one master Timeline after validating that independently orchestrated Timeline assets caused conflicting camera, activation, and control states.
 - Added a temporary perception-control phase after Andrey's real awakening.
 - Created the reusable apartment-lighting foundation and added a development-friendly skip for the complete bed-opening sequence.
 - Added the first lightweight narrative pickup and a dedicated first-person viewmodel rendering layer.
+- Corrected the apartment's initial lighting state so every room begins dark while electrical power remains available.
 
 
 ### Added
@@ -75,6 +76,20 @@
 - `SimpleFPSController` disables its normal look processing while the limiter is active.
 - `SimpleFPSController.SynchronizeLookState()` prevents the camera from snapping when normal look control returns.
 - Horizontal and vertical offsets are clamped through one elliptical boundary rather than independent rectangular limits.
+
+### Technical Correction
+
+The legacy `ApartmentLightFailureController` component was removed from the active scene object.
+
+Although the component had been disabled, its initialization still competed with the new room-circuit system and restored lamp components and bulb materials to their former powered state.
+
+The current lighting ownership is now exclusive:
+
+- `ApartmentPowerSupply` owns apartment-wide power availability.
+- Each `RoomLightCircuit` owns one room's logical switch state.
+- Each room circuit owns only its assigned `Light` component.
+- Each room circuit owns only its assigned bulb renderer.
+- No legacy controller modifies the same lights during scene initialization.
 
 ### Current Look Limits
 
@@ -146,6 +161,16 @@
 - `24.00–26.50`: camera handoff from the bed cutscene camera to the Player camera
 - `26.50`: `FullControl` restored
 
+### Final Starting State
+
+- Apartment-wide electrical power begins available.
+- The living-room wall switch begins off.
+- The entry-hall wall switch begins off.
+- The bathroom wall switch begins off.
+- The kitchen wall switch begins off.
+- The connecting corridor has no independent lamp or wall switch.
+- Every room must be illuminated manually by the player.
+
 ### Resolved Problems
 
 - Removed overlapping independent Timeline execution.
@@ -155,6 +180,15 @@
 - Ensured the sleep-paralysis figure becomes inactive after `FN01`.
 - Restored player control reliably after the complete bed-opening sequence.
 - Preserved a continuous camera view between sleep paralysis and real awakening.
+
+### Result
+
+- All room circuits initialize with `Requested On: Off`.
+- All room circuits initialize with `Actually On: Off`.
+- The first interaction with a wall switch turns its room on.
+- The second interaction turns the room off.
+- The temporary `L` hotkey still simulates apartment-wide power interruption.
+- Restoring power relights only rooms whose wall switches remain on.
 
 ### Test
 
@@ -194,10 +228,18 @@
 - Apartment geometry does not visually occlude the held prop.
 - No duplicate Audio Listener warning appears.
 - No new Console errors are present.
+- The apartment begins dark.
+- Electrical power remains available.
+- Every room switch responds correctly on the first press of `E`.
+- Each switch controls only its assigned room.
+- Bulb materials match the actual light state.
+- Apartment-wide power interruption still preserves wall-switch positions.
+- No conflicting light controller remains active in the scene.
+- No new Console errors are present.
 
 ### Next
 
-Track the ordered FN-03 investigation path from the entry hall through the unlit connecting corridor and into the kitchen.
+Lock the apartment's main entrance door until a later explicit narrative event permits Andrey to leave.
 
 ## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants — E02-T3F Living Room Rug Blockout and Composition Review — E02-T4A Wake-Up Composition Test — E02-T4B Reusable Player Control Modes — E02-T4C Wake-Up Timeline Control Handoff — E02-T4D Sleep-Paralysis Figure and Close Audio
 

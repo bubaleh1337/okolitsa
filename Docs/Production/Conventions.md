@@ -520,3 +520,26 @@ First-person held props use a dedicated URP Overlay camera.
 - no interaction logic.
 
 Individual held visuals own their authored local position, rotation, and scale.
+
+## Scene Initialization Ownership
+
+A disabled legacy component must not remain attached to an active scene object when its initialization can still modify shared runtime state.
+
+### Rules
+
+- One gameplay state must have one authoritative owner.
+- Legacy components must not initialize lights, materials, cameras, audio, or narrative objects also controlled by a replacement system.
+- Disabling a component is not treated as sufficient isolation when its initialization logic can still execute.
+- Obsolete scene components should be removed from the scene after their replacement has been validated.
+- Source files may remain in the project temporarily for migration history, but they must not retain active scene ownership.
+
+## Apartment Lighting Startup Rule
+
+The apartment begins with electrical power available but every room switch in the off position.
+
+This produces a dark yet functional apartment:
+
+- switches work immediately;
+- darkness is caused by ordinary household state;
+- the player restores visibility manually;
+- later power failures remain mechanically distinct from room-switch state.
