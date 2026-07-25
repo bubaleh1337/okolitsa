@@ -14,8 +14,8 @@ TagManager:
   - EditorOnly
   - Interactable
   - ViewModel
-  - 
-  - 
+  - KitchenRevealTarget
+  - KitchenShadowCaster
   - 
   - 
   - 

@@ -1,5 +1,69 @@
 # OKOLITSA Daily Log
 
+## 2026-07-26 — E02-T6B/C Locked Entrance and Kitchen Shadow Illusion
+
+Added the locked apartment entrance and the first persistent environmental apparition of the First Night sequence.
+
+### Locked Apartment Entrance
+
+- Extended the reusable apartment-door interaction with an explicit lock state.
+- The main apartment entrance begins closed and locked.
+- Early interaction does not open the entrance door.
+- Locked interaction supports dedicated handle or lock audio.
+- Other apartment doors remain unlocked and continue using normal interaction.
+- The entrance may later be unlocked through a public narrative-facing method.
+- No key inventory or checklist-based quest system was introduced.
+
+### Apartment Windows and Moonlight
+
+- Added a reusable Soviet-window blockout prefab.
+- Added window instances for the living room and kitchen.
+- Added a dedicated realtime kitchen moonlight source.
+- Moonlight remains independent from the apartment electrical circuits.
+- The kitchen light establishes a visible nocturnal glow near the blind corridor corner.
+- The window structures remain blockout assets until the architectural openings are finalized.
+
+### Grandmother Shadow Illusion
+
+- Created a custom grandmother silhouette from a transparent PNG cutout.
+- The silhouette is displayed on a Quad placed directly on the intended wall.
+- The Quad represents the visible shadow itself rather than acting as a physical shadow caster.
+- The final silhouette has no Collider, Rigidbody, or movement-blocking component.
+- The silhouette uses a transparent dark material and does not cast additional realtime shadows.
+- The staged shadow remains present while observed from the apartment side.
+- The illusion does not disappear according to a timer.
+- The illusion does not depend on entering a hidden quest zone.
+- A camera-centered ray must genuinely reach the reveal target inside the kitchen.
+- Apartment walls and the blind corner block the ray until the player actually looks into the kitchen.
+- After the reveal target is reached, the complete shadow root becomes inactive permanently for the current scene load.
+
+### Design Result
+
+The player may observe an unexplained human-shaped shadow near the corridor before checking the kitchen.
+
+The apparition remains stable while watched, allowing tension and uncertainty to build. When the player finally turns into the corridor and looks toward the kitchen, the silhouette disappears, leaving only the empty apartment and moonlight.
+
+The effect preserves player agency and environmental storytelling without objective markers, quest stages, or explicit confirmation.
+
+### Test
+
+- The apartment entrance begins locked.
+- Pressing `E` does not open the locked entrance.
+- Manual debug unlocking restores normal door interaction.
+- Kitchen moonlight remains visible while apartment room lights are off.
+- The grandmother silhouette appears in the intended wall position.
+- The silhouette does not block player movement.
+- The silhouette does not appear physically inside the kitchen passage.
+- The silhouette remains active until the kitchen is genuinely visible.
+- Looking into the kitchen resolves the illusion once.
+- The shadow root becomes inactive after resolution.
+- The kitchen contains no visible figure after the illusion disappears.
+- No new Console errors are present.
+
+### Next
+
+Begin the balcony sequence blockout following the empty-kitchen investigation.
+
 ## 2026-07-25 — E02-T4E Master Bed Opening Timeline — E02-T4F Constrained Look and Kitchen Impact — E02-T5A Apartment Lighting Foundation and Opening Skip — E02-T5B/C Shoehorn Pickup and Held-Prop ViewModel — E02-T6A Dark Apartment Startup State
 
 - Rebuilt the First Night bed-opening sequence around one master Timeline after validating that independently orchestrated Timeline assets caused conflicting camera, activation, and control states.

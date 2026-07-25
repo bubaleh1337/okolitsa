@@ -446,3 +446,43 @@ Andrey is not trapped inside an inexplicable total power failure. Instead, he mu
 - move through the naturally unlit corridor.
 
 This preserves the real apartment's layout and allows later electrical failures to feel like a meaningful escalation rather than the starting condition.
+
+## FN-03 — Locked Entrance and Kitchen Shadow
+
+**Control mode:** `[GAMEPLAY — FULL CONTROL]`
+
+The main apartment entrance is already locked when Andrey regains control. The door cannot yet be used to leave the apartment, but the game does not present a key objective or a checklist of required household actions.
+
+The apartment remains dark except for available player-controlled room lights and the cold nocturnal light associated with the kitchen window.
+
+### Shadow Presentation
+
+Before Andrey fully checks the kitchen, a tall female silhouette is visible near the blind corridor corner.
+
+The apparition resembles the same elderly woman who will appear more directly later:
+
+- long body;
+- hanging arms;
+- disordered hair;
+- rigid posture;
+- recognizably human but visually uncertain.
+
+The silhouette is an authored environmental illusion positioned directly on the receiving wall. It is not a physical NPC and does not occupy or obstruct the kitchen passage.
+
+### Player Experience
+
+- The shadow remains present while Andrey observes it from the accessible apartment side.
+- It does not disappear because the player waited too long.
+- It does not disappear merely because the player approached the corridor.
+- The kitchen itself remains concealed by the real apartment layout and its sharp blind turn.
+- When the player finally turns and genuinely looks into the kitchen, the shadow disappears.
+- The kitchen contains no person, fallen apparition, or immediate explanation.
+- Only the empty kitchen and nocturnal lighting remain.
+
+### Narrative Purpose
+
+The scene creates a contradiction between visual certainty and physical absence.
+
+The player is given enough time to believe that someone is standing near the kitchen. The eventual disappearance does not confirm whether the silhouette was supernatural, imagined, or simply misunderstood.
+
+This moment establishes the visual identity of the grandmother figure before her later direct appearance, while preserving uncertainty and player-controlled pacing.

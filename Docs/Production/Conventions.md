@@ -543,3 +543,54 @@ This produces a dark yet functional apartment:
 - darkness is caused by ordinary household state;
 - the player restores visibility manually;
 - later power failures remain mechanically distinct from room-switch state.
+
+## Environmental Apparition Conventions
+
+Environmental apparitions should prioritize authored composition, player agency, and reliable presentation over unnecessary physical simulation.
+
+### Fake Shadow Cards
+
+A staged shadow may use a transparent textured Quad when a precise silhouette must appear at a specific location.
+
+Rules:
+
+- The Quad represents the visible shadow itself.
+- It must be placed slightly in front of the receiving wall to avoid z-fighting.
+- It must not contain a Collider or Rigidbody.
+- It must not block player movement.
+- It must not use `Shadows Only` when the Quad itself is intended to be visible.
+- It should not cast secondary realtime shadows.
+- Transparent empty regions of the source texture must remain transparent.
+- The shadow material should use a controlled dark tint rather than depend on arbitrary scene-light interaction.
+- The shadow card and the actual narrative creature are separate assets and responsibilities.
+
+### Illusion Resolution
+
+Environmental illusions must not disappear merely because a timer elapsed.
+
+A visibility-based reveal should:
+
+- originate from the active gameplay camera;
+- use the center-screen viewing direction;
+- respect walls and architectural occlusion;
+- resolve only when the reveal target is the first relevant collider reached;
+- execute only once;
+- disable the complete illusion root after successful resolution.
+
+A trigger-only solution should not replace genuine visibility when the narrative meaning depends on the player actually looking into a space.
+
+### Horror Progression
+
+Narrative prose describes the intended emotional experience, not an automatic quest checklist.
+
+Character actions described in prose must not be converted into ordered trigger chains unless explicit progression control is required and approved.
+
+Preferred tools include:
+
+- environmental sound;
+- lighting;
+- sight lines;
+- staged apparitions;
+- architecture;
+- absence of explanation;
+- voluntary player investigation.
