@@ -371,3 +371,50 @@ It establishes:
 - uneven safety between adjacent spaces;
 - the connecting corridor as a persistent blind zone;
 - the foundation for later light failures and external visibility risk.
+
+## Lightweight Narrative Pickup Conventions
+
+Small authored props may use a lightweight possession system when a full inventory would add unnecessary scope.
+
+### Rules
+
+- World pickups use the existing `IInteractable` contract.
+- The world object and held visual must be separate objects.
+- A successful pickup must disable the world object's interaction colliders.
+- Duplicate acquisition must be rejected.
+- Possession state must remain queryable by later narrative systems.
+- A lightweight narrative pickup must not silently expand into a general inventory, weapon, or combat system.
+- Removal of a held prop does not automatically respawn its collected world object.
+
+## Held-Prop ViewModel Conventions
+
+First-person held props use a dedicated URP Overlay camera.
+
+### Layer Ownership
+
+- World objects remain on their normal world or interaction layers.
+- Held first-person visuals use the `ViewModel` layer.
+- The Main Camera excludes the `ViewModel` layer.
+- The ViewModel camera renders only the `ViewModel` layer.
+
+### Camera Rules
+
+- The Main Camera uses `Render Type: Base`.
+- The ViewModel camera uses `Render Type: Overlay`.
+- The ViewModel camera is included in the Main Camera stack.
+- The ViewModel camera uses `Clear Depth`.
+- Only one active `Audio Listener` may exist.
+- Held-prop cameras must not render apartment geometry.
+- Held visuals must not contain gameplay colliders, Rigidbody components, or world interaction scripts.
+
+### Hierarchy Rule
+
+`HeldProps` is a clean attachment root:
+
+- local position `0 / 0 / 0`;
+- local rotation `0 / 0 / 0`;
+- local scale `1 / 1 / 1`;
+- no collider;
+- no interaction logic.
+
+Individual held visuals own their authored local position, rotation, and scale.

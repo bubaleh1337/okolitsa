@@ -1,10 +1,11 @@
 # OKOLITSA Daily Log
 
-## 2026-07-25 — E02-T4E Master Bed Opening Timeline — E02-T4F Constrained Look and Kitchen Impact — E02-T5A Apartment Lighting Foundation and Opening Skip
+## 2026-07-25 — E02-T4E Master Bed Opening Timeline — E02-T4F Constrained Look and Kitchen Impact — E02-T5A Apartment Lighting Foundation and Opening Skip — E02-T5B/C Shoehorn Pickup and Held-Prop ViewModel
 
 - Rebuilt the First Night bed-opening sequence around one master Timeline after validating that independently orchestrated Timeline assets caused conflicting camera, activation, and control states.
 - Added a temporary perception-control phase after Andrey's real awakening.
 - Created the reusable apartment-lighting foundation and added a development-friendly skip for the complete bed-opening sequence.
+- Added the first lightweight narrative pickup and a dedicated first-person viewmodel rendering layer.
 
 
 ### Added
@@ -39,6 +40,14 @@
 - Visible bulb-material synchronization
 - Apartment-wide power testing through the temporary `L` hotkey
 - Opening-sequence skip through `Space`
+- `SimpleHeldPropController`
+- `NarrativePickupInteractable`
+- World shoehorn blockout in the entry hall
+- Held shoehorn blockout beneath the Player camera
+- `HeldProps` attachment root
+- `ViewModel` layer
+- `CAM_Player_ViewModel`
+- URP Base and Overlay camera stack
 
 ### Architecture Changes
 
@@ -110,6 +119,26 @@
 - Limited look is released.
 - `FullControl` returns on the following frame so the skip key does not immediately trigger a jump.
 
+### ViewModel Rendering
+
+- The Main Camera renders the game world but excludes the `ViewModel` layer.
+- `CAM_Player_ViewModel` renders only the `ViewModel` layer.
+- The ViewModel camera uses URP `Overlay` rendering.
+- `Clear Depth` prevents apartment walls from hiding the held prop.
+- Only the Main Camera contains an `Audio Listener`.
+- The world shoehorn remains on the `Interactable` layer.
+- The held shoehorn has no collider, Rigidbody, or interaction component.
+
+### Pickup Behaviour
+
+- The world shoehorn uses the existing `IInteractable` system.
+- Pressing `E` gives the shoehorn to the Player.
+- The world object becomes inactive after successful pickup.
+- The held version becomes visible beneath the Player camera.
+- Duplicate pickup is prevented.
+- The Player exposes `HasShoehorn` for future narrative progression.
+- No general inventory or combat system was introduced.
+
 ### Final Sequence Flow
 
 - `0.00–11.50`: `FN01` sleep paralysis
@@ -157,10 +186,18 @@
 - Rooms switched off remain off after power restoration.
 - No competing light controller changes the room states.
 - No new Console errors are present.
+- The world shoehorn displays an interaction prompt.
+- Pressing `E` removes the world shoehorn.
+- The held shoehorn appears immediately after pickup.
+- The shoehorn cannot be collected twice.
+- The held prop remains visible when the Player approaches walls.
+- Apartment geometry does not visually occlude the held prop.
+- No duplicate Audio Listener warning appears.
+- No new Console errors are present.
 
 ### Next
 
-Create the blockout shoehorn and a lightweight narrative pickup interaction for FN-03 without introducing a full inventory system.
+Track the ordered FN-03 investigation path from the entry hall through the unlit connecting corridor and into the kitchen.
 
 ## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants — E02-T3F Living Room Rug Blockout and Composition Review — E02-T4A Wake-Up Composition Test — E02-T4B Reusable Player Control Modes — E02-T4C Wake-Up Timeline Control Handoff — E02-T4D Sleep-Paralysis Figure and Close Audio
 
