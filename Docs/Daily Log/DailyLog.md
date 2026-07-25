@@ -1,8 +1,10 @@
 # OKOLITSA Daily Log
 
-## 2026-07-25 — E02-T4E Master Bed Opening Timeline
+## 2026-07-25 — E02-T4E Master Bed Opening Timeline — E02-T4F Constrained Look and Kitchen Impact
 
-Rebuilt the First Night bed-opening sequence around one master Timeline after validating that independently orchestrated Timeline assets caused conflicting camera, activation, and control states.
+- Rebuilt the First Night bed-opening sequence around one master Timeline after validating that independently orchestrated Timeline assets caused conflicting camera, activation, and control states.
+- Added a temporary perception-control phase after Andrey's real awakening.
+
 
 ### Added
 
@@ -14,6 +16,15 @@ Rebuilt the First Night bed-opening sequence around one master Timeline after va
 - `FN01` sleep-paralysis Sub-Timeline
 - `FN02` real-awakening Sub-Timeline
 - Sequential Control Tracks for both authored sections
+- `PlayerLookLimiter`
+- Limited horizontal and vertical mouse look
+- Elliptical diagonal viewing boundary
+- Separate upward and downward viewing limits
+- Synchronization between limited look and `SimpleFPSController`
+- `SIG_EnterLimitedLook`
+- `SIG_PlayKitchenPotFall`
+- Kitchen pot-fall audio event
+- Ten-second limited-look phase before normal gameplay control
 
 ### Architecture Changes
 
@@ -24,6 +35,30 @@ Rebuilt the First Night bed-opening sequence around one master Timeline after va
 - Control Clip activation was disabled so shared scene objects remain active across Sub-Timeline boundaries.
 - The shared bed cutscene camera remains active between sleep paralysis and real awakening.
 - The sleep-paralysis figure uses an Activation Track with `Post-playback State: Inactive`.
+
+### Sequence Flow
+
+- The bed-opening camera handoff completes.
+- The Player enters `LookOnly`.
+- Movement, jumping, interaction, and flashlight input remain disabled.
+- The player may look horizontally, vertically, and diagonally within a constrained human-like viewing region.
+- Approximately seven seconds into this phase, a metal pot impact is heard from the kitchen.
+- After ten seconds, the limiter is released and `FullControl` is restored.
+
+### Technical Structure
+
+- `PlayerControlStateController` remains responsible for the general `LookOnly` and `FullControl` states.
+- `PlayerLookLimiter` temporarily owns camera-look input during the constrained phase.
+- `SimpleFPSController` disables its normal look processing while the limiter is active.
+- `SimpleFPSController.SynchronizeLookState()` prevents the camera from snapping when normal look control returns.
+- Horizontal and vertical offsets are clamped through one elliptical boundary rather than independent rectangular limits.
+
+### Current Look Limits
+
+- Horizontal: approximately `85°` left and `85°` right
+- Upward: approximately `45°`
+- Downward: approximately `35°`
+- Diagonal look: supported within the elliptical boundary
 
 ### Final Sequence Flow
 
@@ -53,10 +88,19 @@ Rebuilt the First Night bed-opening sequence around one master Timeline after va
 - No `No cameras rendering` message appears.
 - No missing or duplicate `Audio Listener` warning appears.
 - No new Console errors are present.
+- The player cannot move during the limited-look phase.
+- Horizontal, vertical, and diagonal camera movement work.
+- The player cannot rotate through a full 360 degrees.
+- Diagonal viewing range reduces naturally near the boundary.
+- The kitchen impact is heard from the kitchen location.
+- Limited look lasts approximately ten seconds.
+- `FullControl` returns after the phase.
+- The camera does not snap when normal look control resumes.
+- No new Console errors are present.
 
 ### Next
 
-Add a ten-second constrained `LookOnly` phase after Andrey returns his gaze to the wall. During this phase, the player may look approximately 90 degrees left and right without moving. A metal pot impact will be heard from the kitchen approximately seven seconds into the phase.
+Continue the real-awakening sequence with Andrey reacting to the kitchen impact while remaining seated and facing the partially concealed apartment corridor.
 
 ## 2026-07-24 — E02-T3B Bedside Table Blockout — E02-T3C CRT Television and TV Stand Blockout — E02-T3D Sideboard Blockout — E02-T3E Photograph and Painting Variants — E02-T3F Living Room Rug Blockout and Composition Review — E02-T4A Wake-Up Composition Test — E02-T4B Reusable Player Control Modes — E02-T4C Wake-Up Timeline Control Handoff — E02-T4D Sleep-Paralysis Figure and Close Audio
 

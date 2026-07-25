@@ -129,5 +129,21 @@ namespace Irka.Player // Preserves the existing namespace so current scene refer
         {
             verticalVelocity = Vector3.zero; // Resets the stored vertical velocity.
         }
+        public void SynchronizeLookState() // Synchronizes the controller's stored pitch with the actual camera rotation.
+        {
+            if (cameraTransform == null) // Checks whether the player camera reference is missing.
+            {
+                return; // Stops safely because no camera state can be read.
+            }
+
+            float synchronizedPitch = cameraTransform.localEulerAngles.x; // Reads the camera's current local vertical angle.
+
+            if (synchronizedPitch > 180f) // Checks whether Unity represents the pitch as a wrapped negative angle.
+            {
+                synchronizedPitch -= 360f; // Converts the wrapped value into a signed angle.
+            }
+
+            pitch = Mathf.Clamp(synchronizedPitch, minimumPitch, maximumPitch); // Stores the current camera pitch without causing a later snap.
+        }
     }
 }

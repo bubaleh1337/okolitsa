@@ -311,3 +311,23 @@ After the figure disappears, Andrey remains in bed, recovers from the experience
   - `TL_FN02_RealAwakening_Prototype`
 
 The transition between these sections preserves one continuous bed-camera perspective. Gameplay control is restored only after the real-awakening section and the camera handoff are complete.
+
+## FN-02 — Seated Limited-Look Phase
+
+**Control mode:** `[HYBRID — LOOK ONLY]`
+
+After Andrey has sat up and returned his gaze toward the wall and apartment arch, the player receives temporary perception-only control.
+
+### Player Experience
+
+- Andrey remains seated on the sofa-bed.
+- The player cannot walk, jump, interact, or use the flashlight.
+- The player may look left, right, upward, downward, and diagonally.
+- The available viewing region is deliberately limited and does not allow unrestricted 360-degree rotation.
+- The camera movement represents Andrey cautiously observing the apartment without yet feeling safe enough to stand.
+
+Approximately seven seconds into this phase, a metal pot appears to fall in the kitchen.
+
+The sound redirects attention toward the apartment arch and the concealed corridor beyond it. Because of the apartment's sharp turn, the player cannot confirm what caused the sound while remaining seated. This preserves the authored fear created by the real apartment layout.
+
+After approximately ten seconds, normal gameplay control is restored for the next response to the kitchen disturbance.

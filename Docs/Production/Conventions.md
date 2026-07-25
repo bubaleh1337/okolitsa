@@ -349,3 +349,50 @@ Sub-Timelines contain local authored content such as:
 - Temporary narrative figures must define an explicit Activation Track post-playback state.
 - Temporary figures that must disappear after their section should use `Post-playback State: Inactive`.
 - The master Timeline must explicitly restore `FullControl` before it ends.
+
+## Constrained Perception Control Conventions
+
+Temporary perception states may further restrict camera input while the Player remains in the reusable `LookOnly` control mode.
+
+### Responsibilities
+
+`PlayerControlStateController` controls:
+
+- movement permission;
+- general camera-look permission;
+- interaction permission;
+- flashlight-input permission.
+
+`PlayerLookLimiter` controls:
+
+- temporary horizontal look limits;
+- temporary vertical look limits;
+- diagonal viewing boundaries;
+- transition back to normal FPS look processing.
+
+### Rules
+
+- Limited perception must use `LookOnly` as its base player-control mode.
+- The normal FPS look controller must not process mouse input while `PlayerLookLimiter` is active.
+- Horizontal and vertical limits should form one elliptical viewing region rather than two independent rectangular clamps.
+- The limiter must capture the current camera orientation when it begins.
+- Ending limited look must synchronize the FPS controller's stored pitch before restoring normal look processing.
+- Signal reaction order must be explicit.
+
+### Enter Limited Look Order
+
+1. `PlayerControlStateController.SetLookOnly()`
+2. `PlayerLookLimiter.BeginLimitedLook()`
+
+### Exit Limited Look Order
+
+1. `PlayerLookLimiter.EndLimitedLook()`
+2. `PlayerControlStateController.SetFullControl()`
+
+### Default Bed-Awakening Limits
+
+- Horizontal limit: `85°` per side
+- Upward limit: `45°`
+- Downward limit: `35°`
+
+These values are authored tuning defaults, not universal settings for every narrative sequence.
