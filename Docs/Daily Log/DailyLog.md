@@ -1,5 +1,45 @@
 # OKOLITSA Daily Log
 
+## 2026-07-26 — E02-T6D1/D2 Smoking Set Blockout and Pickup
+
+Added the cigarette pack and lighter required for the First Night balcony sequence.
+
+### Smoking Set
+
+- Created reusable blockout prefabs for a cigarette pack and lighter.
+- Placed both props naturally on the living-room bedside table.
+- Used one combined interaction volume for the complete smoking set.
+- Disabled the individual prefab Colliders on the scene instances.
+- Added a dedicated FN-04 pickup component.
+- The cigarette pack and lighter are collected together through one natural interaction.
+- Collection hides only the visual root while preserving the controller and runtime state.
+- Exposed a read-only `HasBeenCollected` state for the future balcony ritual.
+- Added an optional collection event without introducing an inventory, objective marker, or checklist system.
+
+### Design Result
+
+The player may notice and collect the smoking items naturally while exploring the apartment. The balcony door remains a normal environmental interaction and is not artificially locked behind the pickup.
+
+The smoking-set state will control whether the authored balcony ritual may begin, rather than controlling whether the player is physically allowed to enter the balcony.
+
+### Test
+
+- The cigarette pack and lighter appear on the bedside table.
+- Both props use readable prototype proportions.
+- A single interaction ray reaches the combined smoking set.
+- Pressing `E` collects both items.
+- Both visual objects disappear together.
+- The smoking-set controller remains active.
+- `Has Been Collected` becomes enabled.
+- The interaction Collider becomes disabled.
+- Repeated interaction does not collect the set again.
+- The existing balcony door continues to open and close normally.
+- No new Console errors are present.
+
+### Next
+
+Use the existing balcony geometry and door to implement the First Balcony Ritual entry and staging.
+
 ## 2026-07-26 — E02-T6B/C Locked Entrance and Kitchen Shadow Illusion
 
 Added the locked apartment entrance and the first persistent environmental apparition of the First Night sequence.

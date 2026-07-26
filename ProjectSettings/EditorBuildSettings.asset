@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Project/Scenes/Stairwell.unity
-    guid: 81950a76f098627419ef058edbe12408
+    path: Assets/_Project/Scenes/FirstNight/SCN_FirstNight_Dev.unity
+    guid: eb2c906e3ba04fb479ce6d8e10a12ce0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 77ff34fb760081945a7d20a44ebfba24,
       type: 3}
